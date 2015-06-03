@@ -7,6 +7,7 @@ from Cryptsy import Cryptsy
 from CoinDesk import CoinDesk
 
 from chartui import ChartUI
+from tradehistui import TradeHistUI
 import matplotlib.finance
 
 from finindicator import FinStrategy
@@ -31,11 +32,11 @@ class MainFrame(Frame):
         self.createWidgets()
         
         f = open('keys.txt', 'r')
-        pubKey = f.readline()
-        privKey = f.readline()
+        pubKey = f.readline().rstrip('\n')
+        privKey = f.readline().rstrip('\n')
         f.close()
         
-        self.c = Cryptsy(pubKey, privKey)
+        self.c = Cryptsy(str(pubKey), str(privKey))
         
         self.cd = CoinDesk()
         self.btcPrice = self.cd.getPrice()
@@ -43,9 +44,10 @@ class MainFrame(Frame):
         self.fs = FinStrategy()
         
         marketData = self.c.markets()
-        
+                
         for market in marketData['data']:
           if market['id'] == '473':
+            print(market['24hr'])
             ziftLastTrade = market['last_trade']['price']
             self.lblZiftPrice['text'] = "{:.6f}".format(ziftLastTrade)
           elif market['id'] == '120':
@@ -90,8 +92,8 @@ class MainFrame(Frame):
         self.lblTotalBal["text"] = "{:.4f}".format(availableBalance['3'] + ziftValue + pointsValue) + " BTC"
         self.lblTotalVal["text"] = "{:.2f}".format((availableBalance['3'] + ziftValue + pointsValue) * self.btcPrice)  + " GBP"
         
-        self.updateThread = threading.Thread(target= self.update)
-        self.updateThread.start()
+        #self.updateThread = threading.Thread(target= self.update)
+        #self.updateThread.start()
         return
 
     def createWidgets(self):
@@ -106,10 +108,16 @@ class MainFrame(Frame):
         
         # Quit Button
         self.QUIT = Button(self)
+        self.QUIT["text"] = "Update"
+        self.QUIT["command"] = self.update
+        self.QUIT.grid({"row": "50", "column": "0"})
+        
+        # Quit Button
+        self.QUIT = Button(self)
         self.QUIT["text"] = "Quit"
         self.QUIT["fg"] = "red"
         self.QUIT["command"] = self.exit
-        self.QUIT.grid({"row": "50", "columnspan": "3"})
+        self.QUIT.grid({"row": "50", "column":"2", "columnspan": "2"})
 
         return
       
@@ -156,6 +164,11 @@ class MainFrame(Frame):
         self.btnZiftChart["text"] = "Chart"
         self.btnZiftChart["command"] = lambda: self.Chart(473)
         self.btnZiftChart.grid({"row": "2", "column":"2"})
+        
+        self.btnZiftChart = Button(self.marketsLblFrame)
+        self.btnZiftChart["text"] = "Trade History"
+        self.btnZiftChart["command"] = lambda: self.TradeHist(473)
+        self.btnZiftChart.grid({"row": "2", "column":"3"})
 
         self.lblPoints = Label(self.marketsLblFrame)
         self.lblPoints["text"] = "Points"
@@ -181,14 +194,15 @@ class MainFrame(Frame):
         self.lblTotalBal["text"] = ""
         self.lblTotalBal.grid({"row": "0", "column":"1"})
         
+        self.lblBTCValue = Label(self.balLblFrame)
+        self.lblBTCValue['text'] = '0'
+        self.lblBTCValue.grid({"row": "1", "column":"0"})
+        
         self.lblTotalVal = Label(self.balLblFrame)
         self.lblTotalVal["text"] = ""
         self.lblTotalVal["fg"] = "green"
         self.lblTotalVal.grid({"row": "1", "column":"1"})
-        
-        self.lblBTCValue = Label(self.balLblFrame)
-        self.lblBTCValue['text'] = '0'
-        self.lblBTCValue.grid({"row": "1", "column":"0"})
+                
         return 
 
     def coins_balFrame(self):
@@ -282,25 +296,29 @@ class MainFrame(Frame):
     def Chart(self, mid):
       chart = ChartUI(self,mid,self.c)
       return
+    
+    def TradeHist(self, mid):
+      trad_hist = TradeHistUI(self,mid,self.c)
+      return
 
     def update(self):
-      while not self.finish:
-        print("Updating Market Data")
-        marketData = self.c.markets()
+      #while not self.finish:
+      print("Updating Market Data")
+      marketData = self.c.markets()
         
-        for market in marketData['data']:
+      for market in marketData['data']:
           #print(market)
-          if market['id'] == '473':
-            self.lblZiftPrice['text'] = "{:.6f}".format(market['last_trade']['price'])
-          elif market['id'] == '120':
-            self.lblPointsPrice['text'] = "{:.6f}".format(market['last_trade']['price'])
+        if market['id'] == '473':
+          self.lblZiftPrice['text'] = "{:.6f}".format(market['last_trade']['price'])
+        elif market['id'] == '120':
+          self.lblPointsPrice['text'] = "{:.6f}".format(market['last_trade']['price'])
             
-        time.sleep(10)
+      #time.sleep(10)
       return 
     
     def exit(self):
       self.finish = TRUE
-      self.updateThread.join()
+      #self.updateThread.join()
       self.quit()
       return
     
