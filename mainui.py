@@ -167,7 +167,7 @@ class MainFrame(Frame):
         
         self.btnZiftChart = Button(self.marketsLblFrame)
         self.btnZiftChart["text"] = "Trade History"
-        self.btnZiftChart["command"] = lambda: self.TradeHist(473)
+        self.btnZiftChart["command"] = lambda: self.TradeHist(275, 473)
         self.btnZiftChart.grid({"row": "2", "column":"3"})
 
         self.lblPoints = Label(self.marketsLblFrame)
@@ -297,8 +297,8 @@ class MainFrame(Frame):
       chart = ChartUI(self,mid,self.c)
       return
     
-    def TradeHist(self, mid):
-      trad_hist = TradeHistUI(self,mid,self.c)
+    def TradeHist(self, cid, mid):
+      trad_hist = TradeHistUI(self, cid, mid,self.c)
       return
 
     def update(self):
