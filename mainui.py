@@ -28,6 +28,8 @@ class MainFrame(Frame):
         
         self.finish = FALSE
         
+        self.master.title("Cryto Currency Trader.")
+        
         self.pack()
         self.createWidgets()
         
@@ -47,17 +49,17 @@ class MainFrame(Frame):
                 
         for market in marketData['data']:
           if market['id'] == '473':
-            print(market['24hr'])
+            #print(market['24hr'])
             ziftLastTrade = market['last_trade']['price']
-            self.lblZiftPrice['text'] = "{:.6f}".format(ziftLastTrade)
+            self.lblZiftPrice['text'] = "{:.8f}".format(ziftLastTrade)
           elif market['id'] == '120':
-            pointsLastTrade = "{:.6f}".format(market['last_trade']['price'])
+            pointsLastTrade = "{:.8f}".format(market['last_trade']['price'])
             self.lblPointsPrice['text'] = pointsLastTrade
           elif market['id'] == '3':
-            ltcLastTrade = "{:.6f}".format(market['last_trade']['price'])
+            ltcLastTrade = "{:.8f}".format(market['last_trade']['price'])
             self.lblLTCPrice['text'] = ltcLastTrade
           elif market['id'] == '454':
-            xrpLastTrade = "{:.6f}".format(market['last_trade']['price'])
+            xrpLastTrade = "{:.8f}".format(market['last_trade']['price'])
             self.lblXRPPrice['text'] = xrpLastTrade
         
         balances = self.c.balances()
@@ -165,10 +167,10 @@ class MainFrame(Frame):
         self.btnZiftChart["command"] = lambda: self.Chart(473)
         self.btnZiftChart.grid({"row": "2", "column":"2"})
         
-        self.btnZiftChart = Button(self.marketsLblFrame)
-        self.btnZiftChart["text"] = "Trade History"
-        self.btnZiftChart["command"] = lambda: self.TradeHist(275, 473)
-        self.btnZiftChart.grid({"row": "2", "column":"3"})
+        self.btnZiftOrders = Button(self.marketsLblFrame)
+        self.btnZiftOrders["text"] = "Order Book"
+        self.btnZiftOrders["command"] = lambda: self.OrderBook(275, 473)
+        self.btnZiftOrders.grid({"row": "2", "column":"3"})
 
         self.lblPoints = Label(self.marketsLblFrame)
         self.lblPoints["text"] = "Points"
@@ -297,7 +299,7 @@ class MainFrame(Frame):
       chart = ChartUI(self,mid,self.c)
       return
     
-    def TradeHist(self, cid, mid):
+    def OrderBook(self, cid, mid):
       trad_hist = TradeHistUI(self, cid, mid,self.c)
       return
 
@@ -309,9 +311,9 @@ class MainFrame(Frame):
       for market in marketData['data']:
           #print(market)
         if market['id'] == '473':
-          self.lblZiftPrice['text'] = "{:.6f}".format(market['last_trade']['price'])
+          self.lblZiftPrice['text'] = "{:.8f}".format(market['last_trade']['price'])
         elif market['id'] == '120':
-          self.lblPointsPrice['text'] = "{:.6f}".format(market['last_trade']['price'])
+          self.lblPointsPrice['text'] = "{:.8f}".format(market['last_trade']['price'])
             
       #time.sleep(10)
       return 

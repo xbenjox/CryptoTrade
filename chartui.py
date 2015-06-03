@@ -1,6 +1,7 @@
 import sys
 import time
 from tkinter import *
+from tkinter import ttk
 
 import matplotlib
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
@@ -33,102 +34,119 @@ class ChartUI(Toplevel):
         self.rowconfigure(1, weight=2)
         self.rowconfigure(1, weight=3)
 
+
+        self.timescale = StringVar()                
+        self.comboTime = ttk.Combobox(self, textvariable=self.timescale)
+        self.comboTime['values'] = ('minute', 'hour', 'day')
+        self.comboTime.current(1)
+        self.comboTime.bind('<<ComboboxSelected>>', self.timeSelect)
+        self.comboTime.grid({"row":"0"})
+        
         self.Close = Button(self)
         self.Close["text"] = "Close"
         self.Close["fg"] = "red"
         self.Close["command"] = self._quit
         self.Close.grid({"row": "3"})
-                        
+        
+        self.mid = mid
+        
         self.c = cr
         self.fi = FinIndicator()
         self.fs = FinStrategy()
         
         matplotlib.rc('ytick', labelsize=8) 
         
-        Prices = self.getPrices(mid)
+        Prices = self.getPrices("hour")
+        self.dates = mpdates.datestr2num(Prices[4])
+        self.lblDates = Prices[4]
+        self.op = Prices[0]
+        self.hp = Prices[1]
+        self.lp = Prices[2]
+        self.cp = Prices[3]
         
-        self.graphFrame(Prices[0],Prices[1], Prices[2], Prices[3], Prices[4])
+        self.graphFrame()
         
         self.strategyFrame()
         
         return
 
-    def graphFrame(self, op, hp, lp, cp, tp):
-        dates = mpdates.datestr2num(tp)
-        
+    def graphFrame(self):
+                
         f = Figure(figsize=(9,6), dpi=100)
         
-        a = f.add_subplot(411)
-        aRSI = f.add_subplot(412, sharex=a)
-        aMACD = f.add_subplot(413, sharex=a)
-        aSto = f.add_subplot(414, sharex=a)
+        self.a = f.add_subplot(411)
+        aRSI = f.add_subplot(412, sharex=self.a)
+        aMACD = f.add_subplot(413, sharex=self.a)
+        aSto = f.add_subplot(414, sharex=self.a)
 
-        a.set_title('Price Action')
+        self.a.set_title('Price Action')
                               
-        sma = self.fi.calcSMA(cp,25)
-        smaSlow = self.fi.calcSMA(cp,50)
+        sma = self.fi.calcSMA(self.cp,25)
+        smaSlow = self.fi.calcSMA(self.cp,50)
         
-        if smaSlow[-1] > cp[-1]:
+        if smaSlow[-1] > self.cp[-1]:
           self.fs.trend = "down"
         else:
           self.fs.trend = "up"
         
-        a.plot_date(dates, cp, '-')
-        a.plot_date(dates, hp, '-')
-        a.plot_date(dates, lp, '-')
-        a.plot_date(dates, sma, '-')
-        a.plot_date(dates, smaSlow, '-')
+        self.a.plot_date(self.dates, self.cp, '-')
+        self.a.plot_date(self.dates, self.hp, '-')
+        self.a.plot_date(self.dates, self.lp, '-')
+        self.a.plot_date(self.dates, sma, '-')
+        self.a.plot_date(self.dates, smaSlow, '-')
         
         fmt = mpdates.DateFormatter('%b %d')
-        a.xaxis.set_major_locator(mpdates.DayLocator())
-        a.xaxis.set_major_formatter(fmt)
-        a.xaxis.set_minor_locator(mpdates.HourLocator())
-        a.set_xlim(dates.min(), dates.max())
+        self.a.xaxis.set_major_locator(mpdates.DayLocator())
+        self.a.xaxis.set_major_formatter(fmt)
+        self.a.xaxis.set_minor_locator(mpdates.HourLocator())
+        self.a.set_xlim(self.dates.min(), self.dates.max())
         
-        a.yaxis.set_major_formatter(FormatStrFormatter('%1.6f'))
+        self.a.yaxis.set_major_formatter(FormatStrFormatter('%1.6f'))
                 
-        a.autoscale_view()
+        self.a.autoscale_view()
         
-        rsi = self.fi.calcRSI(cp, 14)
+        #print(cp)
+        
+        rsi = self.fi.calcRSI(self.cp, 14)
         #print(rsi)
         
         aRSI.set_title('RSI - 14')
         aRSI.xaxis.set_major_locator(mpdates.DayLocator())
         aRSI.xaxis.set_major_formatter(fmt)
         aRSI.xaxis.set_minor_locator(mpdates.HourLocator())
-        aRSI.set_xlim(dates.min(), dates.max())
+        aRSI.set_xlim(self.dates.min(), self.dates.max())
         
-        aRSI.plot_date(dates, rsi, '-')
+        aRSI.plot_date(self.dates, rsi, '-')
         
         aRSI.set_ylim([0,100])
         aRSI.set_yticks([30,50,70])
         aRSI.set_yticklabels((30,50,70),fontsize="8")
         aRSI.grid(b=TRUE, which='major', color='r', axis='y', linestyle='--')
         #aRSI.set_xticks(ind)
-        aRSI.set_xticklabels(tp, fontsize="8", rotation="45", ha="right")
+        aRSI.set_xticklabels(self.lblDates, fontsize="8", rotation="45", ha="right")
         
         aMACD.set_title('MACD')
-        macd = self.calcEMA(cp,12) - self.calcEMA(cp,26)
+        macd = self.calcEMA(self.cp,12) - self.calcEMA(self.cp,26)
         macdSignal = self.calcEMA(macd, 9)
         
         aMACD.xaxis.set_major_locator(mpdates.DayLocator())
         aMACD.xaxis.set_major_formatter(fmt)
         aMACD.xaxis.set_minor_locator(mpdates.HourLocator())
-        aMACD.set_xlim(dates.min(), dates.max())
+        aMACD.set_xlim(self.dates.min(), self.dates.max())
         
-        aMACD.plot_date(dates, macd, "-")
-        aMACD.plot_date(dates, macdSignal, "-")
+        aMACD.plot_date(self.dates, macd, "-")
+        aMACD.plot_date(self.dates, macdSignal, "-")
         
-        sto = self.fi.stochastic(hp, lp, cp)
+        sto = self.fi.stochastic(self.hp, self.lp, self.cp)
         aSto.set_title('Stochastic')
         
         aSto.xaxis.set_major_locator(mpdates.DayLocator())
         aSto.xaxis.set_major_formatter(fmt)
         aSto.xaxis.set_minor_locator(mpdates.HourLocator())
-        aSto.set_xlim(dates.min(), dates.max())
+        aSto.set_xlim(self.dates.min(), self.dates.max())
         
-        aSto.plot_date(dates, sto[0][0], "-")
-        aSto.plot_date(dates, sto[1][0], "-")
+        aSto.plot_date(self.dates, sto[0][0], "-")
+        aSto.plot_date(self.dates, sto[1][0], "-")
                 
         f.subplots_adjust(hspace=0.75)
         f.autofmt_xdate()
@@ -164,8 +182,15 @@ class ChartUI(Toplevel):
         print('you pressed %s'%event.key)
         return
       
-    def getPrices(self, mid):
-      ohlc = self.c.market_ohlc(mid, start=0, stop=time.time(), interval="hour", limit=100)
+    def getPrices(self, ts):      
+      print("Getting " + ts + " prices")
+      
+      if ts == "day":
+        ohlc = self.c.market_ohlc(self.mid, start=0, stop=time.time(), interval=ts, limit=60)
+      else:
+        ohlc = self.c.market_ohlc(self.mid, start=0, stop=time.time(), interval=ts, limit=100)
+
+      #print(ohlc)
 
       openPrices = []
       highPrices = []
@@ -197,3 +222,19 @@ class ChartUI(Toplevel):
     
     def calcStochastic(self):
       return 
+    
+    def timeSelect(self, event):
+      ts = event.widget.get()
+      
+      prices = self.getPrices(ts)
+      self.op = prices[0]
+      self.hp = prices[1]
+      self.lp = prices[2]
+      self.cp = prices[3]
+      self.tp = prices[4]
+      
+      self.dates = mpdates.datestr2num(self.tp)
+      
+      self.graphFrame()
+        
+      return
