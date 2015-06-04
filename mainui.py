@@ -141,6 +141,11 @@ class MainFrame(Frame):
         self.btnXRPChart["command"] = lambda: self.Chart(454)
         self.btnXRPChart.grid({"row": "0", "column":"2"})
         
+        self.btnXRPOrders = Button(self.marketsLblFrame)
+        self.btnXRPOrders["text"] = "Order Book"
+        self.btnXRPOrders["command"] = lambda: self.OrderBook(275, 454)
+        self.btnXRPOrders.grid({"row": "0", "column":"3"})
+        
         self.lblLTC = Label(self.marketsLblFrame)
         self.lblLTC["text"] = "Litecoin"
         self.lblLTC.grid({"row": "1"})
@@ -153,6 +158,11 @@ class MainFrame(Frame):
         self.btnLTCChart["text"] = "Chart"
         self.btnLTCChart["command"] = lambda: self.Chart(3)
         self.btnLTCChart.grid({"row": "1", "column":"2"})
+        
+        self.btnLTCOrders = Button(self.marketsLblFrame)
+        self.btnLTCOrders["text"] = "Order Book"
+        self.btnLTCOrders["command"] = lambda: self.OrderBook(275, 3)
+        self.btnLTCOrders.grid({"row": "1", "column":"3"})
         
         self.lblZift = Label(self.marketsLblFrame)
         self.lblZift["text"] = "ZiftrCoin"
@@ -180,11 +190,16 @@ class MainFrame(Frame):
         self.lblPointsPrice["text"] = "Price: xx"
         self.lblPointsPrice.grid({"row": "3", "column":"1"})
   
-        self.btnZiftChart = Button(self.marketsLblFrame)
-        self.btnZiftChart["text"] = "Chart"
-        self.btnZiftChart["command"] = lambda: self.Chart(120)
-        self.btnZiftChart.grid({"row": "3", "column":"2"})
-                
+        self.btnPointsChart = Button(self.marketsLblFrame)
+        self.btnPointsChart["text"] = "Chart"
+        self.btnPointsChart["command"] = lambda: self.Chart(120)
+        self.btnPointsChart.grid({"row": "3", "column":"2"})
+               
+        self.btnPointsOrders = Button(self.marketsLblFrame)
+        self.btnPointsOrders["text"] = "Order Book"
+        self.btnPointsOrders["command"] = lambda: self.OrderBook(275, 120)
+        self.btnPointsOrders.grid({"row": "3", "column":"3"})
+        
         return 
       
     def total_balFrame(self):

@@ -49,16 +49,20 @@ class TradeHistUI(Toplevel):
       
     def createWidgets(self):
       self.lblAvailable = Label(self)
-      self.lblAvailable.grid({"row":"2", "column":"0"})
+      self.lblAvailable.grid({"row":"2", "column":"0", "columnspan":"2"})
       
       self.frmSellOrders = LabelFrame(self)
       self.frmSellOrders['text'] = "Sell Orders"
       self.frmSellOrders.grid({"row":"3", "column":"0"})
       
-      self.lblSellOrderBook = Label(self)
+      self.lblSellOrderBook = Label(self.frmSellOrders)
       self.lblSellOrderBook.grid({"row":"4", "column":"0"})
       
-      self.lblBuyOrderBook = Label(self)
+      self.frmBuyOrders = LabelFrame(self)
+      self.frmBuyOrders['text'] = "Buy Orders"
+      self.frmBuyOrders.grid({"row":"3", "column":"1"})
+      
+      self.lblBuyOrderBook = Label(self.frmBuyOrders)
       self.lblBuyOrderBook.grid({"row":"4", "column":"1"})
       
       return 
@@ -110,22 +114,29 @@ class TradeHistUI(Toplevel):
              
       a.set_xlim([min(bop),max(sop)])
       
+      #a.scatter(bop, boq, color="green")
+      #a.scatter(sop, soq, color="red")
       
-      a.scatter(bop, boq, color="green")
-      a.scatter(sop, soq, color="red")
-      #a.bar(x+10, soq)
-      #a.plot(so[1], so[0])
-      #a.plot(bo[1], bo[0])
+      #values, base = np.histogram(data, bins=10)
+      #evaluate the cumulative
+      cumSell = np.cumsum(soq)
+      cumBuy = np.cumsum(boq)
+      # plot the cumulative function
+      a.plot(sop, cumSell, c='red')
+      a.fill_between(sop, 0, cumSell, where=cumSell>=0, facecolor='red', interpolate=True)
       
+      a.plot(bop, cumBuy, c='green')
+      a.fill_between(bop, 0, cumBuy, where=cumBuy>=0, facecolor='green', interpolate=True)
       
-      
-      
+      for tick in a.xaxis.get_major_ticks():
+        tick.label.set_fontsize(8) 
+        tick.label.set_rotation(15) 
                    
       canvas = FigureCanvasTkAgg(f, master=self)
         
       canvas.show()
         
-      canvas.get_tk_widget().grid(row="0")
+      canvas.get_tk_widget().grid({"row":"0", "columnspan":"2"})
        
       navFrame = Frame(self) 
       navFrame.grid({"row":"1", "columnspan":"2"})
