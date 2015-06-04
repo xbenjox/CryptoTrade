@@ -7,7 +7,7 @@ from Cryptsy import Cryptsy
 from CoinDesk import CoinDesk
 
 from chartui import ChartUI
-from tradehistui import TradeHistUI
+from orderbookui import TradeHistUI
 import matplotlib.finance
 
 from finindicator import FinStrategy
