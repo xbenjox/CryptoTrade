@@ -8,6 +8,8 @@ from CoinDesk import CoinDesk
 
 from chartui import ChartUI
 from orderbookui import TradeHistUI
+from capitalui import CapitalUI
+
 import matplotlib.finance
 
 from finindicator import FinStrategy
@@ -108,18 +110,24 @@ class MainFrame(Frame):
         # Values
         self.total_balFrame()
         
-        # Quit Button
-        self.QUIT = Button(self)
-        self.QUIT["text"] = "Update"
-        self.QUIT["command"] = self.update
-        self.QUIT.grid({"row": "50", "column": "0"})
+        # Update Button
+        self.btnUpdate = Button(self)
+        self.btnUpdate["text"] = "Update"
+        self.btnUpdate["command"] = self.update
+        self.btnUpdate.grid({"row": "50", "column": "0"})
+        
+        # Capital Button
+        self.btnCapital = Button(self)
+        self.btnCapital["text"] = "Capital"
+        self.btnCapital["command"] = self.Capital
+        self.btnCapital.grid({"row": "50", "column": "1"})
         
         # Quit Button
         self.QUIT = Button(self)
         self.QUIT["text"] = "Quit"
         self.QUIT["fg"] = "red"
         self.QUIT["command"] = self.exit
-        self.QUIT.grid({"row": "50", "column":"2", "columnspan": "2"})
+        self.QUIT.grid({"row": "50", "column":"2"})
 
         return
       
@@ -311,11 +319,15 @@ class MainFrame(Frame):
         return 
 
     def Chart(self, mid):
-      chart = ChartUI(self,mid,self.c)
+      chart = ChartUI(self,mid,self.c, self.fs)
       return
     
     def OrderBook(self, cid, mid):
       trad_hist = TradeHistUI(self, cid, mid,self.c)
+      return
+    
+    def Capital(self):
+      capital = CapitalUI(self)
       return
 
     def update(self):

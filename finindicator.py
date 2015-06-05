@@ -11,7 +11,7 @@ class FinIndicator:
     d = [float('nan')] * len(hp)
     period = 14
     
-    print("Calculating Stochastic")
+    #print("Calculating Stochastic")
     
     for i in range(period, len(hp) +1):
       highestHigh[i-1] = max(hp[i-period:i])
@@ -27,14 +27,14 @@ class FinIndicator:
     return [[k],[d]]
   
   def calcRSI(self, cp, period=14):
-    print("Calculating RSI")
-    print(cp)
+    #print("Calculating RSI")
+    #print(cp)
     
     deltas = np.diff(cp)
     deltas = np.insert(deltas, 0, float('nan'))
     
-    print("Deltas")
-    print(deltas)
+    #print("Deltas")
+    #print(deltas)
     
     gains = [0] * len(cp)
     losses = [0] * len(cp)
@@ -58,10 +58,10 @@ class FinIndicator:
     avgGain[period] = sum(gains[:period-1]) / period
     avgLoss[period] = sum(losses[:period-1]) / period
     
-    print("Avg Gains")
-    print(avgGain)
-    print("Avg Losses")
-    print(avgLoss)
+    #print("Avg Gains")
+    #print(avgGain)
+    #print("Avg Losses")
+    #print(avgLoss)
     
     for i in range(period+1, len(cp)):
       if avgGain[i-1] == 0:
@@ -102,9 +102,14 @@ class FinStrategy:
   def __init__(self):
     self.risk = 0.03
     self.trend = ""
+    self.sellPoints = []
     
     return 
 
   def getTrend(self):
     return 
 
+  def getSellPoint(self, mid):
+    sp = 0.0
+    
+    return sp

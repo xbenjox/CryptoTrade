@@ -21,8 +21,9 @@ from finindicator import FinStrategy
 class ChartUI(Toplevel):
     c = NONE
     fi = NONE
+    fs = NONE
     
-    def __init__(self,parent, mid, cr):
+    def __init__(self,parent, mid, cr, fs):
         Toplevel.__init__(self, parent)
         self.transient(parent)
         
@@ -52,7 +53,7 @@ class ChartUI(Toplevel):
         
         self.c = cr
         self.fi = FinIndicator()
-        self.fs = FinStrategy()
+        self.fs = fs
         
         matplotlib.rc('ytick', labelsize=8) 
         
@@ -63,6 +64,11 @@ class ChartUI(Toplevel):
         self.hp = Prices[1]
         self.lp = Prices[2]
         self.cp = Prices[3]
+        
+        fractals = self.getFractals(self.hp)
+        self.last_high_fractal = self.hp[fractals[-1]]
+        
+        self.fs.sellPoints.append(self.last_high_fractal)
         
         self.graphFrame()
         
@@ -90,10 +96,13 @@ class ChartUI(Toplevel):
           self.fs.trend = "up"
         
         self.a.plot_date(self.dates, self.cp, '-')
-        self.a.plot_date(self.dates, self.hp, '-')
-        self.a.plot_date(self.dates, self.lp, '-')
+        #self.a.plot_date(self.dates, self.hp, '-')
+        #self.a.plot_date(self.dates, self.lp, '-')
         self.a.plot_date(self.dates, sma, '-')
         self.a.plot_date(self.dates, smaSlow, '-')
+        self.a.plot(self.last_high_fractal, '--')
+        
+        
         
         fmt = mpdates.DateFormatter('%b %d')
         self.a.xaxis.set_major_locator(mpdates.DayLocator())
@@ -238,3 +247,12 @@ class ChartUI(Toplevel):
       self.graphFrame()
         
       return
+    
+    def getFractals(self, data):
+      fractals = []
+            
+      for x in range(2, len(data)-3):
+        if data[x] > data[x-2] and data[x] > data[x-1] and data[x] > data[x+1] and data[x] > data[x+2]:
+          fractals.append(x)
+
+      return fractals
