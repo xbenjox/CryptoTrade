@@ -136,6 +136,9 @@ class Cryptsy:
     def transfers(self, limit=100):
         return self._query(method="transfers", query=[("limit", limit)])
 
+    def tradehistory(self):
+      return self._query(method="tradehistory", query=[("limit",100)])
+      return
 
     # Orders
     def order(self, id):

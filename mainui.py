@@ -327,7 +327,7 @@ class MainFrame(Frame):
       return
     
     def Capital(self):
-      capital = CapitalUI(self)
+      capital = CapitalUI(self, self.c)
       return
 
     def update(self):

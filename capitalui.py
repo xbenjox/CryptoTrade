@@ -1,12 +1,17 @@
 from tkinter import *
 
 class CapitalUI(Toplevel):
-  def __init__(self, parent):
+  def __init__(self, parent, c_api):
     Toplevel.__init__(self, parent)
+    
+    self.c = c_api
+    
     self.transient(parent)
         
     self.geometry("800x600+50+50")
-        
+    
+    self.get_trades()
+    
     self.createWidgets()
 
     self.Close = Button(self)
@@ -28,3 +33,8 @@ class CapitalUI(Toplevel):
     self.destroy()
     return
 
+  def get_trades(self):
+    trade_hist = self.c.tradehistory()
+    
+    print (trade_hist)
+    return 
