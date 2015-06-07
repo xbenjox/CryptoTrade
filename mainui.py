@@ -6,6 +6,8 @@ from tkinter import *
 from Cryptsy import Cryptsy
 from CoinDesk import CoinDesk
 
+import xml.etree.ElementTree as ET
+
 from chartui import ChartUI
 from orderbookui import TradeHistUI
 from capitalui import CapitalUI
@@ -35,6 +37,15 @@ class MainFrame(Frame):
         self.pack()
         self.createWidgets()
         
+        tree = ET.parse('sellpoints.xml')
+        root = tree.getroot()
+        for trade in root.findall('trade'):
+          cur = trade.find('currency').text
+          amt = trade.find('amount').text
+          cost = trade.find('cost').text
+          print(str(cur) + " " + str(amt) + " " + str(cost))
+          
+        
         f = open('keys.txt', 'r')
         pubKey = f.readline().rstrip('\n')
         privKey = f.readline().rstrip('\n')
@@ -63,6 +74,12 @@ class MainFrame(Frame):
           elif market['id'] == '454':
             xrpLastTrade = "{:.8f}".format(market['last_trade']['price'])
             self.lblXRPPrice['text'] = xrpLastTrade
+          elif market['id'] == '132':
+            dogeLastTrade = "{:.8f}".format(market['last_trade']['price'])
+            self.lblDOGPrice['text'] = dogeLastTrade
+          elif market['id'] == '119':
+            btsLastTrade = "{:.8f}".format(market['last_trade']['price'])
+            self.lblBTSPrice['text'] = btsLastTrade
         
         balances = self.c.balances()
         availableBalance = balances['data']['available']
@@ -70,6 +87,11 @@ class MainFrame(Frame):
         
         ziftValue = availableBalance['275'] * ziftLastTrade
         pointsValue = availableBalance['89'] * float(pointsLastTrade)
+        dogeValue = availableBalance['94'] * float(dogeLastTrade)
+        
+        print(availableBalance)
+        for x in availableBalance:
+          print(x)
         
         self.lblBalBTC["text"] = "Bitcoin: "
         self.lblVolBTC["text"] = str(availableBalance['3'])
@@ -82,7 +104,15 @@ class MainFrame(Frame):
         
         self.lblBalLTC["text"] = "Litecoin: "
         self.lblVolLTC["text"] = str(availableBalance['2'])
-        self.lblValLTC["text"] = str(availableBalance['2'])        
+        self.lblValLTC["text"] = str(availableBalance['2']) 
+        
+        self.lblBalBTS["text"] = "BitShares: "
+        self.lblVolBTS["text"] = str(availableBalance['2'])
+        self.lblValBTS["text"] = str(availableBalance['2'])
+        
+        self.lblBalDOG["text"] = "Dogecoin: "
+        self.lblVolDOG["text"] = str(availableBalance['94'])
+        self.lblValDOG["text"] = str(dogeValue)
         
         self.lblBalZift["text"] = "ZiftrCoin: "
         self.lblVolZift['text'] = str(availableBalance['275'])
@@ -93,8 +123,8 @@ class MainFrame(Frame):
         self.lblValPoints['text'] = str(pointsValue)
         
         self.lblBTCValue['text'] = str(self.btcPrice)
-        self.lblTotalBal["text"] = "{:.4f}".format(availableBalance['3'] + ziftValue + pointsValue) + " BTC"
-        self.lblTotalVal["text"] = "{:.2f}".format((availableBalance['3'] + ziftValue + pointsValue) * self.btcPrice)  + " GBP"
+        self.lblTotalBal["text"] = "{:.4f}".format(availableBalance['3'] + ziftValue + pointsValue + dogeValue) + " BTC"
+        self.lblTotalVal["text"] = "{:.2f}".format((availableBalance['3'] + ziftValue + pointsValue + dogeValue) * self.btcPrice)  + " GBP"
         
         #self.updateThread = threading.Thread(target= self.update)
         #self.updateThread.start()
@@ -172,41 +202,77 @@ class MainFrame(Frame):
         self.btnLTCOrders["command"] = lambda: self.OrderBook(275, 3)
         self.btnLTCOrders.grid({"row": "1", "column":"3"})
         
+        self.lblBTS = Label(self.marketsLblFrame)
+        self.lblBTS["text"] = "Bitshares"
+        self.lblBTS.grid({"row": "2"})
+        
+        self.lblBTSPrice = Label(self.marketsLblFrame)
+        self.lblBTSPrice["text"] = "Price: xx" 
+        self.lblBTSPrice.grid({"row": "2", "column":"1"})
+
+        self.btnBTSChart = Button(self.marketsLblFrame)
+        self.btnBTSChart["text"] = "Chart"
+        self.btnBTSChart["command"] = lambda: self.Chart(119)
+        self.btnBTSChart.grid({"row": "2", "column":"2"})
+        
+        self.btnBTSrders = Button(self.marketsLblFrame)
+        self.btnBTSrders["text"] = "Order Book"
+        self.btnBTSrders["command"] = lambda: self.OrderBook(275, 119)
+        self.btnBTSrders.grid({"row": "2", "column":"3"})
+        
+        self.lblDOG = Label(self.marketsLblFrame)
+        self.lblDOG["text"] = "Dogecoin"
+        self.lblDOG.grid({"row": "3"})
+        
+        self.lblDOGPrice = Label(self.marketsLblFrame)
+        self.lblDOGPrice["text"] = "Price: xx" 
+        self.lblDOGPrice.grid({"row": "3", "column":"1"})
+
+        self.btnDOGChart = Button(self.marketsLblFrame)
+        self.btnDOGChart["text"] = "Chart"
+        self.btnDOGChart["command"] = lambda: self.Chart(3)
+        self.btnDOGChart.grid({"row": "3", "column":"2"})
+        
+        self.btnDOGOrders = Button(self.marketsLblFrame)
+        self.btnDOGOrders["text"] = "Order Book"
+        self.btnDOGOrders["command"] = lambda: self.OrderBook(275, 3)
+        self.btnDOGOrders.grid({"row": "3", "column":"3"})
+        
         self.lblZift = Label(self.marketsLblFrame)
         self.lblZift["text"] = "ZiftrCoin"
-        self.lblZift.grid({"row": "2"})
+        self.lblZift.grid({"row": "4"})
         
         self.lblZiftPrice = Label(self.marketsLblFrame)
         self.lblZiftPrice["text"] = "Price: xx" 
-        self.lblZiftPrice.grid({"row": "2", "column":"1"})
+        self.lblZiftPrice.grid({"row": "4", "column":"1"})
 
         self.btnZiftChart = Button(self.marketsLblFrame)
         self.btnZiftChart["text"] = "Chart"
         self.btnZiftChart["command"] = lambda: self.Chart(473)
-        self.btnZiftChart.grid({"row": "2", "column":"2"})
+        self.btnZiftChart.grid({"row": "4", "column":"2"})
         
         self.btnZiftOrders = Button(self.marketsLblFrame)
         self.btnZiftOrders["text"] = "Order Book"
         self.btnZiftOrders["command"] = lambda: self.OrderBook(275, 473)
-        self.btnZiftOrders.grid({"row": "2", "column":"3"})
+        self.btnZiftOrders.grid({"row": "4", "column":"3"})
 
         self.lblPoints = Label(self.marketsLblFrame)
         self.lblPoints["text"] = "Points"
-        self.lblPoints.grid({"row": "3"})
+        self.lblPoints.grid({"row": "5"})
         
         self.lblPointsPrice = Label(self.marketsLblFrame)
         self.lblPointsPrice["text"] = "Price: xx"
-        self.lblPointsPrice.grid({"row": "3", "column":"1"})
+        self.lblPointsPrice.grid({"row": "5", "column":"1"})
   
         self.btnPointsChart = Button(self.marketsLblFrame)
         self.btnPointsChart["text"] = "Chart"
         self.btnPointsChart["command"] = lambda: self.Chart(120)
-        self.btnPointsChart.grid({"row": "3", "column":"2"})
+        self.btnPointsChart.grid({"row": "5", "column":"2"})
                
         self.btnPointsOrders = Button(self.marketsLblFrame)
         self.btnPointsOrders["text"] = "Order Book"
         self.btnPointsOrders["command"] = lambda: self.OrderBook(275, 120)
-        self.btnPointsOrders.grid({"row": "3", "column":"3"})
+        self.btnPointsOrders.grid({"row": "5", "column":"3"})
         
         return 
       
@@ -292,30 +358,53 @@ class MainFrame(Frame):
         self.lblValLTC["text"] = ""
         self.lblValLTC.grid({"row": "4", "column":"2"})
 
+        self.lblBalBTS = Label(self.coinsbalLblFrame)
+        self.lblBalBTS["text"] = "Bitshares"
+        self.lblBalBTS.grid({"row": "5", "column":"0"})
+        
+        self.lblVolBTS = Label(self.coinsbalLblFrame)
+        self.lblVolBTS["text"] = ""
+        self.lblVolBTS.grid({"row": "5", "column":"1"})
+        
+        self.lblValBTS = Label(self.coinsbalLblFrame)
+        self.lblValBTS["text"] = ""
+        self.lblValBTS.grid({"row": "5", "column":"2"})
+
+        self.lblBalDOG = Label(self.coinsbalLblFrame)
+        self.lblBalDOG["text"] = "Dogecoins"
+        self.lblBalDOG.grid({"row": "6", "column":"0"})
+        
+        self.lblVolDOG = Label(self.coinsbalLblFrame)
+        self.lblVolDOG["text"] = ""
+        self.lblVolDOG.grid({"row": "6", "column":"1"})
+        
+        self.lblValDOG = Label(self.coinsbalLblFrame)
+        self.lblValDOG["text"] = ""
+        self.lblValDOG.grid({"row": "6", "column":"2"})
 
         self.lblBalZift = Label(self.coinsbalLblFrame)
         self.lblBalZift["text"] = "ZiftrCoin"
-        self.lblBalZift.grid({"row": "5", "column":"0"})
+        self.lblBalZift.grid({"row": "7", "column":"0"})
         
         self.lblVolZift = Label(self.coinsbalLblFrame)
         self.lblVolZift["text"] = ""
-        self.lblVolZift.grid({"row": "5", "column":"1"})
+        self.lblVolZift.grid({"row": "7", "column":"1"})
         
         self.lblValZift = Label(self.coinsbalLblFrame)
         self.lblValZift["text"] = ""
-        self.lblValZift.grid({"row": "5", "column":"2"})
+        self.lblValZift.grid({"row": "7", "column":"2"})
                 
         self.lblBalPoints = Label(self.coinsbalLblFrame)
         self.lblBalPoints["text"] = "Points"
-        self.lblBalPoints.grid({"row": "6", "column":"0"})
+        self.lblBalPoints.grid({"row": "8", "column":"0"})
         
         self.lblVolPoints = Label(self.coinsbalLblFrame)
         self.lblVolPoints["text"] = ""
-        self.lblVolPoints.grid({"row": "6", "column":"1"})
+        self.lblVolPoints.grid({"row": "8", "column":"1"})
         
         self.lblValPoints = Label(self.coinsbalLblFrame)
         self.lblValPoints["text"] = ""
-        self.lblValPoints.grid({"row": "6", "column":"2"})
+        self.lblValPoints.grid({"row": "8", "column":"2"})
         return 
 
     def Chart(self, mid):
