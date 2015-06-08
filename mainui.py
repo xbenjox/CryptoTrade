@@ -222,12 +222,12 @@ class MainFrame(Frame):
 
         self.btnDOGChart = Button(self.marketsLblFrame)
         self.btnDOGChart["text"] = "Chart"
-        self.btnDOGChart["command"] = lambda: self.Chart(3)
+        self.btnDOGChart["command"] = lambda: self.Chart(132)
         self.btnDOGChart.grid({"row": "3", "column":"2"})
         
         self.btnDOGOrders = Button(self.marketsLblFrame)
         self.btnDOGOrders["text"] = "Order Book"
-        self.btnDOGOrders["command"] = lambda: self.OrderBook(275, 3)
+        self.btnDOGOrders["command"] = lambda: self.OrderBook(275, 132)
         self.btnDOGOrders.grid({"row": "3", "column":"3"})
         
         self.lblZift = Label(self.marketsLblFrame)

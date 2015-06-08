@@ -2,6 +2,8 @@ from tkinter import *
 
 import xml.etree.ElementTree as ET
 
+import math
+
 class CapitalUI(Toplevel):
   def __init__(self, parent, c_api):
     Toplevel.__init__(self, parent)
@@ -54,6 +56,7 @@ class CapitalUI(Toplevel):
     tradeText = ""
     
     dogePL = 0 
+    dogePLQty = 0
     
     for trade in trades['data']:
       if trade['marketid'] == "132":
@@ -61,18 +64,27 @@ class CapitalUI(Toplevel):
         
         if trade['initiate_ordertype'] == "Buy":
           dogePL -= (trade['total'] + trade['fee'])
+          dogePLQty += trade['quantity']
         elif trade['initiate_ordertype'] == "Sell":
           dogePL += (trade['total'] - trade['fee'])
+          dogePLQty -= trade['quantity']
         
         print(trade)
       else:
         tradeText += trade['orderid'] + "\n"
       
     self.lblDogePL['text'] = "Profit/Loss: " + str(dogePL)
+   
+    # Calculate required price for profit
+    if dogePL < 0:
+      posDogePL = dogePL * -1
+      reqp = (posDogePL + ( posDogePL * 0.025 )) / dogePLQty
+    else:
+      reqp = 0
+      
+      reqp = math.ceil(reqp * 100000000) / 100000000
     
-   # (dogePL * -1) +
-    
-    self.lblDogeReqP['text'] = ""
+    self.lblDogeReqP['text'] = "{:.8f}".format(reqp)
     
     self.lblTrades['text'] = tradeText
     
