@@ -6,8 +6,6 @@ from tkinter import *
 from Cryptsy import Cryptsy
 from CoinDesk import CoinDesk
 
-import xml.etree.ElementTree as ET
-
 from chartui import ChartUI
 from orderbookui import TradeHistUI
 from capitalui import CapitalUI
@@ -37,13 +35,7 @@ class MainFrame(Frame):
         self.pack()
         self.createWidgets()
         
-        tree = ET.parse('sellpoints.xml')
-        root = tree.getroot()
-        for trade in root.findall('trade'):
-          cur = trade.find('currency').text
-          amt = trade.find('amount').text
-          cost = trade.find('cost').text
-          print(str(cur) + " " + str(amt) + " " + str(cost))
+       
           
         
         f = open('keys.txt', 'r')
@@ -89,9 +81,9 @@ class MainFrame(Frame):
         pointsValue = availableBalance['89'] * float(pointsLastTrade)
         dogeValue = availableBalance['94'] * float(dogeLastTrade)
         
-        print(availableBalance)
-        for x in availableBalance:
-          print(x)
+        #print(availableBalance)
+        #for x in availableBalance:
+        #  print(x)
         
         self.lblBalBTC["text"] = "Bitcoin: "
         self.lblVolBTC["text"] = str(availableBalance['3'])
