@@ -51,8 +51,10 @@ class MainFrame(Frame):
         self.fs = FinStrategy()
         
         marketData = self.c.markets()
-                
+          
+        self.last_trade_prices = {}
         for market in marketData['data']:
+          self.last_trade_prices[market['label']] = market['last_trade']['price']
           if market['id'] == '473':
             #print(market['24hr'])
             ziftLastTrade = market['last_trade']['price']
@@ -408,7 +410,7 @@ class MainFrame(Frame):
       return
     
     def Capital(self):
-      capital = CapitalUI(self, self.c)
+      capital = CapitalUI(self, self.c, self.last_trade_prices)
       return
 
     def update(self):
