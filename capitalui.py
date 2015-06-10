@@ -5,18 +5,17 @@ import xml.etree.ElementTree as ET
 import math
 
 class CapitalUI(Toplevel):
-  def __init__(self, parent, c_api):
+  def __init__(self, parent, c_api, last_trade_prices):
     Toplevel.__init__(self, parent)
     
     self.c = c_api
+    self.last_trade_prices = last_trade_prices
     
     self.transient(parent)
         
     self.geometry("800x600+50+50")
     
     self.get_history_xml()
-    
-    #self.get_trades()
     
     self.createWidgets()
     
@@ -41,6 +40,9 @@ class CapitalUI(Toplevel):
 
     self.lblDogeReqP = Label(self.lblFrameDoge)
     self.lblDogeReqP.grid({"row":"15", "column":"1"})
+    
+    self.lblDogeCurPL = Label(self.lblFrameDoge)
+    self.lblDogeCurPL.grid({"row":"16"})
     
     self.Close = Button(self)
     self.Close["text"] = "Close"
@@ -76,13 +78,19 @@ class CapitalUI(Toplevel):
     self.lblDogePL['text'] = "Profit/Loss: " + str(dogePL)
    
     # Calculate required price for profit
+    
     if dogePL < 0:
       posDogePL = dogePL * -1
       reqp = (posDogePL + ( posDogePL * 0.025 )) / dogePLQty
     else:
       reqp = 0
       
-      reqp = math.ceil(reqp * 100000000) / 100000000
+    reqp = math.ceil(reqp * 100000000) / 100000000
+    
+    # Calculate current PL
+    print(self.last_trade_prices['DOGE/BTC'])
+    
+    self.lblDogeCurPL['text'] = "Current PL: " + "{:.8f}".format(dogePL + ((self.last_trade_prices['DOGE/BTC'] * dogePLQty) - (self.last_trade_prices['DOGE/BTC'] * dogePLQty * 0.025)))
     
     self.lblDogeReqP['text'] = "{:.8f}".format(reqp)
     
