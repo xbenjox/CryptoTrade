@@ -422,6 +422,8 @@ class MainFrame(Frame):
           self.lblZiftPrice['text'] = "{:.8f}".format(market['last_trade']['price'])
         elif market['id'] == '120':
           self.lblPointsPrice['text'] = "{:.8f}".format(market['last_trade']['price'])
+        elif market['id'] == '132':
+          self.lblDOGPrice['text'] = "{:.8f}".format(market['last_trade']['price'])
             
       #time.sleep(10)
       return 
