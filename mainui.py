@@ -1,6 +1,7 @@
 import threading
 import datetime
 import time
+from collections import Counter
 
 from tkinter import *
 from Cryptsy import Cryptsy
@@ -9,6 +10,7 @@ from CoinDesk import CoinDesk
 from chartui import ChartUI
 from orderbookui import TradeHistUI
 from capitalui import CapitalUI
+from dataui import DataUI
 
 import matplotlib.finance
 
@@ -34,9 +36,7 @@ class MainFrame(Frame):
         
         self.pack()
         self.createWidgets()
-        
-       
-          
+               
         
         f = open('keys.txt', 'r')
         pubKey = f.readline().rstrip('\n')
@@ -50,6 +50,7 @@ class MainFrame(Frame):
         
         self.fs = FinStrategy()
         
+        # Get market data, including last trade prices
         marketData = self.c.markets()
           
         self.last_trade_prices = {}
@@ -78,15 +79,16 @@ class MainFrame(Frame):
         balances = self.c.balances()
         availableBalance = balances['data']['available']
         heldBalance = balances['data']['held']
-        
+                        
+        # Calculate Gross Balances
+        gross_balances = Counter()
+        gross_balances.update(availableBalance)
+        gross_balances.update(heldBalance)
+                     
         ziftValue = availableBalance['275'] * ziftLastTrade
         pointsValue = availableBalance['89'] * float(pointsLastTrade)
-        dogeValue = availableBalance['94'] * float(dogeLastTrade)
-        
-        #print(availableBalance)
-        #for x in availableBalance:
-        #  print(x)
-        
+        dogeValue = gross_balances['94'] * float(dogeLastTrade)
+       
         self.lblBalBTC["text"] = "Bitcoin: "
         self.lblVolBTC["text"] = str(availableBalance['3'])
         self.lblValBTC["text"] = str(availableBalance['3'])        
@@ -105,7 +107,7 @@ class MainFrame(Frame):
         self.lblValBTS["text"] = str(availableBalance['2'])
         
         self.lblBalDOG["text"] = "Dogecoin: "
-        self.lblVolDOG["text"] = str(availableBalance['94'])
+        self.lblVolDOG["text"] = str(gross_balances['94'])
         self.lblValDOG["text"] = str(dogeValue)
         
         self.lblBalZift["text"] = "ZiftrCoin: "
@@ -146,12 +148,18 @@ class MainFrame(Frame):
         self.btnCapital["command"] = self.Capital
         self.btnCapital.grid({"row": "50", "column": "1"})
         
+        # Data Button
+        self.btnData = Button(self)
+        self.btnData["text"] = "Data"
+        self.btnData["command"] = self.Data
+        self.btnData.grid({"row": "50", "column": "2"})
+        
         # Quit Button
         self.QUIT = Button(self)
         self.QUIT["text"] = "Quit"
         self.QUIT["fg"] = "red"
         self.QUIT["command"] = self.exit
-        self.QUIT.grid({"row": "50", "column":"2"})
+        self.QUIT.grid({"row": "50", "column":"3"})
 
         return
       
@@ -311,6 +319,10 @@ class MainFrame(Frame):
         self.lblHdrInvestable = Label(self.coinsbalLblFrame)
         self.lblHdrInvestable["text"] = "Investable"
         self.lblHdrInvestable.grid({"row": "1", "column":"3"})
+        
+        self.lblHdrInvestable = Label(self.coinsbalLblFrame)
+        self.lblHdrInvestable["text"] = "Investable"
+        self.lblHdrInvestable.grid({"row": "1", "column":"3"})
 
         self.lblBalBTC = Label(self.coinsbalLblFrame)
         self.lblBalBTC["text"] = "Bitcoins"
@@ -411,6 +423,10 @@ class MainFrame(Frame):
     
     def Capital(self):
       capital = CapitalUI(self, self.c, self.last_trade_prices)
+      return
+    
+    def Data(self):
+      data = DataUI(self, self.c)
       return
 
     def update(self):

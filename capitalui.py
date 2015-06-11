@@ -116,7 +116,7 @@ class CapitalUI(Toplevel):
     return trade_hist
   
   def get_history_xml(self):
-    tree = ET.parse('sellpoints.xml')
+    tree = ET.parse('./Data/sellpoints.xml')
     
     root = tree.getroot()
     
