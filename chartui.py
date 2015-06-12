@@ -66,9 +66,10 @@ class ChartUI(Toplevel):
         self.cp = Prices[3]
         
         fractals = self.getFractals(self.hp)
-        self.last_high_fractal = self.hp[fractals[-1]]
+        if len(fractals) > 0:
+          self.last_high_fractal = self.hp[fractals[-1]]
         
-        self.fs.sellPoints.append(self.last_high_fractal)
+          self.fs.sellPoints.append(self.last_high_fractal)
         
         self.graphFrame()
         
@@ -100,7 +101,9 @@ class ChartUI(Toplevel):
         #self.a.plot_date(self.dates, self.lp, '-')
         self.a.plot_date(self.dates, sma, '-')
         self.a.plot_date(self.dates, smaSlow, '-')
-        self.a.plot(self.last_high_fractal, '--')
+        
+        #if self.last_high_fractal != NONE:
+        #  self.a.plot(self.last_high_fractal, '--')
         
         
         

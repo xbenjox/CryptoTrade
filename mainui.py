@@ -88,6 +88,7 @@ class MainFrame(Frame):
         ziftValue = availableBalance['275'] * ziftLastTrade
         pointsValue = availableBalance['89'] * float(pointsLastTrade)
         dogeValue = gross_balances['94'] * float(dogeLastTrade)
+        ltcValue = gross_balances['2'] * float(ltcLastTrade)
        
         self.lblBalBTC["text"] = "Bitcoin: "
         self.lblVolBTC["text"] = str(availableBalance['3'])
@@ -100,7 +101,7 @@ class MainFrame(Frame):
         
         self.lblBalLTC["text"] = "Litecoin: "
         self.lblVolLTC["text"] = str(availableBalance['2'])
-        self.lblValLTC["text"] = str(availableBalance['2']) 
+        self.lblValLTC["text"] = str(ltcValue) 
         
         self.lblBalBTS["text"] = "BitShares: "
         self.lblVolBTS["text"] = str(availableBalance['2'])
@@ -119,8 +120,8 @@ class MainFrame(Frame):
         self.lblValPoints['text'] = str(pointsValue)
         
         self.lblBTCValue['text'] = str(self.btcPrice)
-        self.lblTotalBal["text"] = "{:.4f}".format(availableBalance['3'] + ziftValue + pointsValue + dogeValue) + " BTC"
-        self.lblTotalVal["text"] = "{:.2f}".format((availableBalance['3'] + ziftValue + pointsValue + dogeValue) * self.btcPrice)  + " GBP"
+        self.lblTotalBal["text"] = "{:.4f}".format(availableBalance['3'] + ziftValue + pointsValue + dogeValue + ltcValue) + " BTC"
+        self.lblTotalVal["text"] = "{:.2f}".format((availableBalance['3'] + ziftValue + pointsValue + dogeValue + ltcValue) * self.btcPrice)  + " GBP"
         
         #self.updateThread = threading.Thread(target= self.update)
         #self.updateThread.start()
