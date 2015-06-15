@@ -10,8 +10,9 @@ from CoinDesk import CoinDesk
 from chartui import ChartUI
 from orderbookui import TradeHistUI
 from capitalui import CapitalUI
-from dataui import DataUI
+from marketoverviewui import MarketOverviewUI
 
+from dataui import DataUI
 import matplotlib.finance
 
 from finindicator import FinStrategy
@@ -130,6 +131,12 @@ class MainFrame(Frame):
     def createWidgets(self):
         # Markets
         self.coins_marketFrame()
+        
+        # Market Overview Chart
+        self.btnMarketOverview = Button(self)
+        self.btnMarketOverview['text'] = "Overview"
+        self.btnMarketOverview['command'] = self.marketOverview
+        self.btnMarketOverview.grid({"row": "2", "column":"1"})
                         
         # Balances        
         self.coins_balFrame()
@@ -418,7 +425,11 @@ class MainFrame(Frame):
       chart = ChartUI(self,mid,self.c, self.fs)
       return
     
+    def marketOverview(self):
+      chart = MarketOverviewUI(self, self.c)
+      return
     def OrderBook(self, cid, mid):
+    
       trad_hist = TradeHistUI(self, cid, mid,self.c)
       return
     
