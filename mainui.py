@@ -73,8 +73,8 @@ class MainFrame(Frame):
             dogeLastTrade = "{:.8f}".format(market['last_trade']['price'])
             self.lblDOGPrice['text'] = dogeLastTrade
           elif market['id'] == '119':
-            btsLastTrade = "{:.8f}".format(market['last_trade']['price'])
-            self.lblBTSPrice['text'] = btsLastTrade
+            dshLastTrade = "{:.8f}".format(market['last_trade']['price'])
+            self.lblDSHPrice['text'] = dshLastTrade
         
         balances = self.c.balances()
         availableBalance = balances['data']['available']
@@ -103,9 +103,9 @@ class MainFrame(Frame):
         self.lblVolLTC["text"] = str(availableBalance['2'])
         self.lblValLTC["text"] = str(ltcValue) 
         
-        self.lblBalBTS["text"] = "BitShares: "
-        self.lblVolBTS["text"] = str(availableBalance['2'])
-        self.lblValBTS["text"] = str(availableBalance['2'])
+        self.lblBalDSH["text"] = "Dashcoin: "
+        self.lblVolDSH["text"] = str(availableBalance['2'])
+        self.lblValDSH["text"] = str(availableBalance['2'])
         
         self.lblBalDOG["text"] = "Dogecoin: "
         self.lblVolDOG["text"] = str(gross_balances['94'])
@@ -205,23 +205,23 @@ class MainFrame(Frame):
         self.btnLTCOrders["command"] = lambda: self.OrderBook(275, 3)
         self.btnLTCOrders.grid({"row": "1", "column":"3"})
         
-        self.lblBTS = Label(self.marketsLblFrame)
-        self.lblBTS["text"] = "Bitshares"
-        self.lblBTS.grid({"row": "2"})
+        self.lblDSH = Label(self.marketsLblFrame)
+        self.lblDSH["text"] = "Dashcoin"
+        self.lblDSH.grid({"row": "2"})
         
-        self.lblBTSPrice = Label(self.marketsLblFrame)
-        self.lblBTSPrice["text"] = "Price: xx" 
-        self.lblBTSPrice.grid({"row": "2", "column":"1"})
+        self.lblDSHPrice = Label(self.marketsLblFrame)
+        self.lblDSHPrice["text"] = "Price: xx" 
+        self.lblDSHPrice.grid({"row": "2", "column":"1"})
 
-        self.btnBTSChart = Button(self.marketsLblFrame)
-        self.btnBTSChart["text"] = "Chart"
-        self.btnBTSChart["command"] = lambda: self.Chart(119)
-        self.btnBTSChart.grid({"row": "2", "column":"2"})
+        self.btnDSHChart = Button(self.marketsLblFrame)
+        self.btnDSHChart["text"] = "Chart"
+        self.btnDSHChart["command"] = lambda: self.Chart(119)
+        self.btnDSHChart.grid({"row": "2", "column":"2"})
         
-        self.btnBTSrders = Button(self.marketsLblFrame)
-        self.btnBTSrders["text"] = "Order Book"
-        self.btnBTSrders["command"] = lambda: self.OrderBook(275, 119)
-        self.btnBTSrders.grid({"row": "2", "column":"3"})
+        self.btnDSHOrders = Button(self.marketsLblFrame)
+        self.btnDSHOrders["text"] = "Order Book"
+        self.btnDSHOrders["command"] = lambda: self.OrderBook(275, 119)
+        self.btnDSHOrders.grid({"row": "2", "column":"3"})
         
         self.lblDOG = Label(self.marketsLblFrame)
         self.lblDOG["text"] = "Dogecoin"
@@ -365,17 +365,17 @@ class MainFrame(Frame):
         self.lblValLTC["text"] = ""
         self.lblValLTC.grid({"row": "4", "column":"2"})
 
-        self.lblBalBTS = Label(self.coinsbalLblFrame)
-        self.lblBalBTS["text"] = "Bitshares"
-        self.lblBalBTS.grid({"row": "5", "column":"0"})
+        self.lblBalDSH = Label(self.coinsbalLblFrame)
+        self.lblBalDSH["text"] = "Bitshares"
+        self.lblBalDSH.grid({"row": "5", "column":"0"})
         
-        self.lblVolBTS = Label(self.coinsbalLblFrame)
-        self.lblVolBTS["text"] = ""
-        self.lblVolBTS.grid({"row": "5", "column":"1"})
+        self.lblVolDSH = Label(self.coinsbalLblFrame)
+        self.lblVolDSH["text"] = ""
+        self.lblVolDSH.grid({"row": "5", "column":"1"})
         
-        self.lblValBTS = Label(self.coinsbalLblFrame)
-        self.lblValBTS["text"] = ""
-        self.lblValBTS.grid({"row": "5", "column":"2"})
+        self.lblValDSH = Label(self.coinsbalLblFrame)
+        self.lblValDSH["text"] = ""
+        self.lblValDSH.grid({"row": "5", "column":"2"})
 
         self.lblBalDOG = Label(self.coinsbalLblFrame)
         self.lblBalDOG["text"] = "Dogecoins"
