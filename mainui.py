@@ -22,6 +22,8 @@ class MainFrame(Frame):
     BIG_FONT = 12
     SMALL_FONT = 8
     
+    markets = [473, 120, 3, 454, 132, 119]
+    
     c = NONE
     lblPointsRSI = NONE
     lblZiftPrice = None
@@ -136,7 +138,7 @@ class MainFrame(Frame):
         self.btnMarketOverview = Button(self)
         self.btnMarketOverview['text'] = "Overview"
         self.btnMarketOverview['command'] = self.marketOverview
-        self.btnMarketOverview.grid({"row": "2", "column":"1"})
+        self.btnMarketOverview.grid({"row": "0", "column":"2", "columnspan":"1"})
                         
         # Balances        
         self.coins_balFrame()
@@ -174,7 +176,7 @@ class MainFrame(Frame):
     def coins_marketFrame(self):
         self.marketsLblFrame = LabelFrame(self)
         self.marketsLblFrame["text"] = "Markets"
-        self.marketsLblFrame.grid({"row": "0", "column":"0", "columnspan":"3"})
+        self.marketsLblFrame.grid({"row": "0", "column":"0", "columnspan":"2"})
         
         self.lblXRP = Label(self.marketsLblFrame)
         self.lblXRP["text"] = "Ripple"
@@ -426,7 +428,7 @@ class MainFrame(Frame):
       return
     
     def marketOverview(self):
-      chart = MarketOverviewUI(self, self.c)
+      chart = MarketOverviewUI(self, self.c, self.markets)
       return
     def OrderBook(self, cid, mid):
     

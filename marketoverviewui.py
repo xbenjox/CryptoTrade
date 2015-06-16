@@ -14,7 +14,7 @@ class MarketOverviewUI(Toplevel):
     c = NONE
     fi = NONE
     
-    def __init__(self,parent, cr):
+    def __init__(self,parent, cr, markets):
         Toplevel.__init__(self, parent)
         self.transient(parent)
         
@@ -28,6 +28,8 @@ class MarketOverviewUI(Toplevel):
         self.rowconfigure(1, weight=2)
         self.rowconfigure(1, weight=3)
         
+        self.markets = markets
+        
         self.createWidgets()
         
         self.c = cr
@@ -36,7 +38,7 @@ class MarketOverviewUI(Toplevel):
         
         self.update(data)
         
-        self.graph(data)                
+        self.graph(data)
         
         
         self.Close = Button(self)
@@ -56,30 +58,31 @@ class MarketOverviewUI(Toplevel):
         return
       
     def getData(self):
-      data = self.c.market_ohlc(2,interval="day")
+      data = []
+      for market in self.markets:
+        print("Getting data for :" + str(market))
+        market_data = self.c.market_ohlc(market,interval="day")
              
+        data += market_data['data']
+        
       return data
     
     def update(self, data):
       return
     
     def graph(self, data):
+      
+      prices = []
+      dates = []
+      # format data
+      for d in data:
+        prices += d['close']
+        dates += d['timestamp']
+      
       f = Figure(figsize=(6,4), dpi=100)
         
       a = f.add_subplot(111)
       a.set_title('Current Orders')
-            
-      soq = []
-      sop = []
-      for order in data[2][:10]:
-       soq.append(order['quantity'])
-       sop.append(order['price'])
-
-      boq = []
-      bop = []
-      for order in data[1][:10]:
-        boq.append(order['quantity'])
-        bop.append(order['price'])
              
       a.set_xlim([min(bop),max(sop)])
       
