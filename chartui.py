@@ -57,7 +57,7 @@ class ChartUI(Toplevel):
         
         matplotlib.rc('ytick', labelsize=8) 
         
-        Prices = self.getPrices("hour")
+        Prices = self.getPrices("day")
         self.dates = mpdates.datestr2num(Prices[4])
         self.lblDates = Prices[4]
         self.op = Prices[0]
