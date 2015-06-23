@@ -63,7 +63,7 @@ class MarketOverviewUI(Toplevel):
         print("Getting data for :" + str(market))
         market_data = self.c.market_ohlc(market,interval="day")
              
-        data += market_data['data']
+        data.append(market_data['data'])
         
       return data
     
@@ -72,33 +72,31 @@ class MarketOverviewUI(Toplevel):
     
     def graph(self, data):
       
-      prices = []
-      dates = []
-      # format data
-      for d in data:
-        prices += d['close']
-        dates += d['timestamp']
+      print(data)
+      
+      
+        
       
       f = Figure(figsize=(6,4), dpi=100)
         
       a = f.add_subplot(111)
-      a.set_title('Current Orders')
+      a.set_title('Market Overview')
              
-      a.set_xlim([min(bop),max(sop)])
+      #a.set_xlim([min(bop),max(sop)])
       
-      #a.scatter(bop, boq, color="green")
-      #a.scatter(sop, soq, color="red")
       
-      #values, base = np.histogram(data, bins=10)
-      #evaluate the cumulative
-      cumSell = np.cumsum(soq)
-      cumBuy = np.cumsum(boq)
-      # plot the cumulative function
-      a.plot(sop, cumSell, c='red')
-      a.fill_between(sop, 0, cumSell, where=cumSell>=0, facecolor='red', interpolate=True)
-      
-      a.plot(bop, cumBuy, c='green')
-      a.fill_between(bop, 0, cumBuy, where=cumBuy>=0, facecolor='green', interpolate=True)
+      # format data
+      for d in data:
+        print(d)
+        cp = []
+        for p in d:
+          cp.append(p['close'])
+        
+        npcp = np.array(cp)
+        #percdiff = np.diff(npcp) / npcp[:-1] * 100.
+        adjprice = np.diff(npcp) - npcp[0]
+        
+        a.plot(adjprice)
       
       for tick in a.xaxis.get_major_ticks():
         tick.label.set_fontsize(8) 

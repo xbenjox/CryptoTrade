@@ -39,7 +39,7 @@ class ChartUI(Toplevel):
         self.timescale = StringVar()                
         self.comboTime = ttk.Combobox(self, textvariable=self.timescale)
         self.comboTime['values'] = ('minute', 'hour', 'day')
-        self.comboTime.current(1)
+        self.comboTime.current(2)
         self.comboTime.bind('<<ComboboxSelected>>', self.timeSelect)
         self.comboTime.grid({"row":"0"})
         
