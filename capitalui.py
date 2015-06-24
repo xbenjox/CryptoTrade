@@ -44,6 +44,22 @@ class CapitalUI(Toplevel):
     self.lblDogeCurPL = Label(self.lblFrameDoge)
     self.lblDogeCurPL.grid({"row":"16"})
     
+    self.lblFrameXRP = LabelFrame(self)
+    self.lblFrameXRP['text'] = "Ripple"
+    self.lblFrameXRP.grid({"row":"2"})
+    
+    self.lblXRPCap = Label(self.lblFrameXRP)
+    self.lblXRPCap.grid({"row":"0"})
+    
+    self.lblXRPPL = Label(self.lblFrameXRP)
+    self.lblXRPPL.grid({"row":"15"})
+
+    self.lblXRPReqP = Label(self.lblFrameXRP)
+    self.lblXRPReqP.grid({"row":"15", "column":"1"})
+    
+    self.lblXRPCurPL = Label(self.lblFrameXRP)
+    self.lblXRPCurPL.grid({"row":"16"})
+    
     self.Close = Button(self)
     self.Close["text"] = "Close"
     self.Close["fg"] = "red"
@@ -60,6 +76,9 @@ class CapitalUI(Toplevel):
     dogePL = 0 
     dogePLQty = 0
     
+    xrpPL = 0
+    xrpPLQty = 0
+    
     for trade in trades['data']:
       if trade['marketid'] == "132":
         self.lblDogeCap['text'] = "Type: " + trade['initiate_ordertype'] + " Quantity: " + str(trade['quantity']) + " Price: " + str(trade['total']) + " Fee: " + str(trade['fee']) + "."
@@ -72,10 +91,22 @@ class CapitalUI(Toplevel):
           dogePLQty -= trade['quantity']
         
         print(trade)
+      if trade['marketid'] == "454":
+        self.lblXRPCap['text'] = "Type: " + trade['initiate_ordertype'] + " Quantity: " + str(trade['quantity']) + " Price: " + str(trade['total']) + " Fee: " + str(trade['fee']) + "."
+        
+        if trade['initiate_ordertype'] == "Buy":
+          xrpPL -= (trade['total'] + trade['fee'])
+          xrpPLQty += trade['quantity']
+        elif trade['initiate_ordertype'] == "Sell":
+          xrpPL += (trade['total'] - trade['fee'])
+          xrpPLQty -= trade['quantity']
+        
+        print(trade)
       else:
         tradeText += trade['orderid'] + "\n"
       
     self.lblDogePL['text'] = "Profit/Loss: " + str(dogePL)
+    self.lblXRPPL['text'] = "Profit/Loss: " + str(xrpPL)
    
     # Calculate required price for profit
     
@@ -87,12 +118,22 @@ class CapitalUI(Toplevel):
       
     reqp = math.ceil(reqp * 100000000) / 100000000
     
+    if xrpPL < 0:
+      posXRPPL = xrpPL * -1
+      reqXRPp = (posXRPPL + (posXRPPL * 0.025)) / xrpPLQty
+    else:
+      reqXRPp = 0
+    
+    reqXRPp = math.ceil(reqXRPp * 100000000) / 100000000
+      
     # Calculate current PL
     print(self.last_trade_prices['DOGE/BTC'])
     
     self.lblDogeCurPL['text'] = "Current PL: " + "{:.8f}".format(dogePL + ((self.last_trade_prices['DOGE/BTC'] * dogePLQty) - (self.last_trade_prices['DOGE/BTC'] * dogePLQty * 0.025)))
-    
+    self.lblXRPCurPL['text'] = "Current PL: " + "{:.8f}".format(xrpPL + ((self.last_trade_prices['XRP/BTC'] * xrpPLQty) - (self.last_trade_prices['XRP/BTC'] * xrpPLQty * 0.025)))
+        
     self.lblDogeReqP['text'] = "{:.8f}".format(reqp)
+    self.lblXRPReqP['text'] = "{:.8f}".format(reqXRPp)
     
     self.lblTrades['text'] = tradeText
     

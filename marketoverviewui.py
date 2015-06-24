@@ -7,6 +7,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolb
 from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
 from matplotlib.ticker import FormatStrFormatter
+import matplotlib.patches as mpatches
 import matplotlib.dates as mpdates
 import numpy as np
 
@@ -21,12 +22,7 @@ class MarketOverviewUI(Toplevel):
         self.geometry("800x600+50+50")
         
         self.columnconfigure(0, weight=1)
-        self.columnconfigure(1, weight=1)
-        
-        self.rowconfigure(1, weight=0)
-        self.rowconfigure(1, weight=1)
-        self.rowconfigure(1, weight=2)
-        self.rowconfigure(1, weight=3)
+        self.rowconfigure(0, weight=1)
         
         self.markets = markets
         
@@ -83,9 +79,12 @@ class MarketOverviewUI(Toplevel):
       a.set_title('Market Overview')
              
       #a.set_xlim([min(bop),max(sop)])
-      
+      colours = ['red', 'blue', 'green', 'yellow', 'cyan', 'black' ]
+      mLabels=['ZiftrCoins','Points','LiteCoin','Ripple','Dogecoin','Dash']
+      legHandles = []
       
       # format data
+      counter = 0
       for d in data:
         print(d)
         cp = []
@@ -93,20 +92,26 @@ class MarketOverviewUI(Toplevel):
           cp.append(p['close'])
         
         npcp = np.array(cp)
-        #percdiff = np.diff(npcp) / npcp[:-1] * 100.
-        adjprice = np.diff(npcp) - npcp[0]
+        revnpcp = list(reversed(npcp))
+        percdiff = revnpcp / revnpcp[0] * 100.
+        adjprice = revnpcp - revnpcp[0]
         
-        a.plot(adjprice)
+        p = a.plot(percdiff, label=mLabels[counter], color=colours[counter])
+        legHandles.append(mpatches.Patch(color=colours[counter], label=colours[counter]))
+        
+        counter += 1
+      
+      a.legend(handles=legHandles, labels=['ZiftrCoins','Points','LiteCoin','Ripple','Dogecoin','Dash'], loc='upper left', prop={'size':8})
       
       for tick in a.xaxis.get_major_ticks():
         tick.label.set_fontsize(8) 
         tick.label.set_rotation(15) 
                    
       canvas = FigureCanvasTkAgg(f, master=self)
-        
+      
       canvas.show()
         
-      canvas.get_tk_widget().grid({"row":"0", "columnspan":"2"})
+      canvas.get_tk_widget().grid({"row":"0", "columnspan":"2", "sticky":"NSEW"})
        
       navFrame = Frame(self) 
       navFrame.grid({"row":"1", "columnspan":"2"})
