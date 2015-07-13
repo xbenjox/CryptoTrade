@@ -92,7 +92,7 @@ class CapitalUI(Toplevel):
         
         print(trade)
       if trade['marketid'] == "454":
-        self.lblXRPCap['text'] = "Type: " + trade['initiate_ordertype'] + " Quantity: " + str(trade['quantity']) + " Price: " + str(trade['total']) + " Fee: " + str(trade['fee']) + "."
+        
         
         if trade['initiate_ordertype'] == "Buy":
           xrpPL -= (trade['total'] + trade['fee'])
@@ -100,6 +100,8 @@ class CapitalUI(Toplevel):
         elif trade['initiate_ordertype'] == "Sell":
           xrpPL += (trade['total'] - trade['fee'])
           xrpPLQty -= trade['quantity']
+        
+        self.lblXRPCap['text'] = "Type: " + trade['initiate_ordertype'] + " Quantity: " + str(trade['quantity']) + " Price: " + str(trade['total']) + " Fee: " + str(trade['fee']) + "."
         
         print(trade)
       else:
