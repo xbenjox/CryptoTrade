@@ -78,16 +78,25 @@ class ChartUI(Toplevel):
         return
 
     def graphFrame(self):
+      
+        font = {'size':10,
+                'color':'black',
+                'weight':'normal',
+                'verticalalignment':'baseline',
+                'horizontalalignment':'left'}
                 
         f = Figure(figsize=(9,6), dpi=100)
+        f.subplots_adjust(hspace=0.001)
         
-        self.a = f.add_subplot(411)
-        aRSI = f.add_subplot(412, sharex=self.a)
-        aMACD = f.add_subplot(413, sharex=self.a)
-        aSto = f.add_subplot(414, sharex=self.a)
+        self.aPrice = f.add_subplot(411)
+        aRSI = f.add_subplot(412, sharex=self.aPrice)
+        aMACD = f.add_subplot(413, sharex=self.aPrice)
+        aSto = f.add_subplot(414, sharex=self.aPrice)
 
-        self.a.set_title('Price Action')
+        self.aPrice.text(0.5,0.8,'Price Action', horizontalalignment='center', verticalalignment='center')
+        #self.aPrice.text(0.5,0.8,'Price Action', horizontalalignment='center', verticalalignment='center')
                               
+	                       
         sma = self.fi.calcSMA(self.cp,25)
         smaSlow = self.fi.calcSMA(self.cp,50)
         
@@ -96,11 +105,11 @@ class ChartUI(Toplevel):
         else:
           self.fs.trend = "up"
         
-        self.a.plot_date(self.dates, self.cp, '-')
+        self.aPrice.plot_date(self.dates, self.cp, '-')
         #self.a.plot_date(self.dates, self.hp, '-')
         #self.a.plot_date(self.dates, self.lp, '-')
-        self.a.plot_date(self.dates, sma, '-')
-        self.a.plot_date(self.dates, smaSlow, '-')
+        self.aPrice.plot_date(self.dates, sma, '-')
+        self.aPrice.plot_date(self.dates, smaSlow, '-')
         
         #if self.last_high_fractal != NONE:
         #  self.a.plot(self.last_high_fractal, '--')
@@ -108,14 +117,14 @@ class ChartUI(Toplevel):
         
         
         fmt = mpdates.DateFormatter('%b %d')
-        self.a.xaxis.set_major_locator(mpdates.DayLocator())
-        self.a.xaxis.set_major_formatter(fmt)
-        self.a.xaxis.set_minor_locator(mpdates.HourLocator())
-        self.a.set_xlim(self.dates.min(), self.dates.max())
+        self.aPrice.xaxis.set_major_locator(mpdates.DayLocator())
+        self.aPrice.xaxis.set_major_formatter(fmt)
+        self.aPrice.xaxis.set_minor_locator(mpdates.HourLocator())
+        self.aPrice.set_xlim(self.dates.min(), self.dates.max())
         
-        self.a.yaxis.set_major_formatter(FormatStrFormatter('%1.6f'))
+        self.aPrice.yaxis.set_major_formatter(FormatStrFormatter('%1.6f'))
                 
-        self.a.autoscale_view()
+        self.aPrice.autoscale_view()
         
         #print(cp)
         
@@ -160,7 +169,7 @@ class ChartUI(Toplevel):
         aSto.plot_date(self.dates, sto[0][0], "-")
         aSto.plot_date(self.dates, sto[1][0], "-")
                 
-        f.subplots_adjust(hspace=0.75)
+        #f.subplots_adjust(hspace=0.75)
         f.autofmt_xdate()
         
         canvas = FigureCanvasTkAgg(f, master=self)
