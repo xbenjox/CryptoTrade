@@ -54,85 +54,97 @@ class MainFrame(Frame):
         self.fs = FinStrategy()
         
         # Get market data, including last trade prices
-        marketData = self.c.markets()
+        try:
+            marketData = self.c.markets()
+            
           
-        self.last_trade_prices = {}
-        for market in marketData['data']:
-          self.last_trade_prices[market['label']] = market['last_trade']['price']
-          if market['id'] == '473':
-            #print(market['24hr'])
-            ziftLastTrade = market['last_trade']['price']
-            self.lblZiftPrice['text'] = "{:.8f}".format(ziftLastTrade)
-          elif market['id'] == '120':
-            pointsLastTrade = "{:.8f}".format(market['last_trade']['price'])
-            self.lblPointsPrice['text'] = pointsLastTrade
-          elif market['id'] == '3':
-            ltcLastTrade = "{:.8f}".format(market['last_trade']['price'])
-            self.lblLTCPrice['text'] = ltcLastTrade
-          elif market['id'] == '454':
-            xrpLastTrade = "{:.8f}".format(market['last_trade']['price'])
-            self.lblXRPPrice['text'] = xrpLastTrade
-          elif market['id'] == '132':
-            dogeLastTrade = "{:.8f}".format(market['last_trade']['price'])
-            self.lblDOGPrice['text'] = dogeLastTrade
-          elif market['id'] == '119':
-            dshLastTrade = "{:.8f}".format(market['last_trade']['price'])
-            self.lblDSHPrice['text'] = dshLastTrade
+            self.last_trade_prices = {}
+            for market in marketData['data']:
+              self.last_trade_prices[market['label']] = market['last_trade']['price']
+              if market['id'] == '473':
+                #print(market['24hr'])
+                ziftLastTrade = market['last_trade']['price']
+                self.lblZiftPrice['text'] = "{:.8f}".format(ziftLastTrade)
+              elif market['id'] == '120':
+                pointsLastTrade = "{:.8f}".format(market['last_trade']['price'])
+                self.lblPointsPrice['text'] = pointsLastTrade
+              elif market['id'] == '3':
+                ltcLastTrade = "{:.8f}".format(market['last_trade']['price'])
+                self.lblLTCPrice['text'] = ltcLastTrade
+              elif market['id'] == '454':
+                xrpLastTrade = "{:.8f}".format(market['last_trade']['price'])
+                self.lblXRPPrice['text'] = xrpLastTrade
+              elif market['id'] == '132':
+                dogeLastTrade = "{:.8f}".format(market['last_trade']['price'])
+                self.lblDOGPrice['text'] = dogeLastTrade
+              elif market['id'] == '119':
+                dshLastTrade = "{:.8f}".format(market['last_trade']['price'])
+                self.lblDSHPrice['text'] = dshLastTrade
         
-        balances = self.c.balances()
-        availableBalance = balances['data']['available']
-        #print(availableBalance)
-        heldBalance = balances['data']['held']
+        except KeyError:
+          print("No Market Data")
+        
+        # Get Balances
+        try:
+            balances = self.c.balances()
+            availableBalance = balances['data']['available']
+            #print(availableBalance)
+            heldBalance = balances['data']['held']
                         
-        # Calculate Gross Balances
-        gross_balances = Counter()
-        gross_balances.update(availableBalance)
-        gross_balances.update(heldBalance)
+            # Calculate Gross Balances
+            gross_balances = Counter()
+            gross_balances.update(availableBalance)
+            gross_balances.update(heldBalance)
                      
-        ziftValue = availableBalance['275'] * ziftLastTrade
-        pointsValue = availableBalance['89'] * float(pointsLastTrade)
-        dogeValue = gross_balances['94'] * float(dogeLastTrade)
-        ltcValue = gross_balances['2'] * float(ltcLastTrade)
-        xrpValue = gross_balances['240'] * float(xrpLastTrade)
+            ziftValue = availableBalance['275'] * ziftLastTrade
+            pointsValue = availableBalance['89'] * float(pointsLastTrade)
+            dogeValue = gross_balances['94'] * float(dogeLastTrade)
+            ltcValue = gross_balances['2'] * float(ltcLastTrade)
+            xrpValue = gross_balances['240'] * float(xrpLastTrade)
        
-        self.lblBalBTC["text"] = "Bitcoin: "
-        self.lblVolBTC["text"] = str(availableBalance['3'])
-        self.lblValBTC["text"] = str(availableBalance['3'])        
-        self.lblInvBTC["text"] = str(availableBalance['3'] * self.fs.risk)
+            self.lblBalBTC["text"] = "Bitcoin: "
+            self.lblVolBTC["text"] = str(availableBalance['3'])
+            self.lblValBTC["text"] = str(availableBalance['3'])        
+            self.lblInvBTC["text"] = str(availableBalance['3'] * self.fs.risk)
         
-        self.lblBalXRP["text"] = "Ripple: "
-        self.lblVolXRP["text"] = str(availableBalance['240'])
-        self.lblValXRP["text"] = str(xrpValue)
+            self.lblBalXRP["text"] = "Ripple: "
+            self.lblVolXRP["text"] = str(availableBalance['240'])
+            self.lblValXRP["text"] = str(xrpValue)
         
-        self.lblBalLTC["text"] = "Litecoin: "
-        self.lblVolLTC["text"] = str(availableBalance['2'])
-        self.lblValLTC["text"] = str(ltcValue) 
+            self.lblBalLTC["text"] = "Litecoin: "
+            self.lblVolLTC["text"] = str(availableBalance['2'])
+            self.lblValLTC["text"] = str(ltcValue) 
         
-        self.lblBalDSH["text"] = "Dashcoin: "
-        self.lblVolDSH["text"] = str(availableBalance['2'])
-        self.lblValDSH["text"] = str(availableBalance['2'])
+            self.lblBalDSH["text"] = "Dashcoin: "
+            self.lblVolDSH["text"] = str(availableBalance['2'])
+            self.lblValDSH["text"] = str(availableBalance['2'])
         
-        self.lblBalDOG["text"] = "Dogecoin: "
-        self.lblVolDOG["text"] = str(gross_balances['94'])
-        self.lblValDOG["text"] = str(dogeValue)
+            self.lblBalDOG["text"] = "Dogecoin: "
+            self.lblVolDOG["text"] = str(gross_balances['94'])
+            self.lblValDOG["text"] = str(dogeValue)
         
-        self.lblBalZift["text"] = "ZiftrCoin: "
-        self.lblVolZift['text'] = str(availableBalance['275'])
-        self.lblValZift['text'] = str(ziftValue)        
+            self.lblBalZift["text"] = "ZiftrCoin: "
+            self.lblVolZift['text'] = str(availableBalance['275'])
+            self.lblValZift['text'] = str(ziftValue)        
         
-        self.lblBalPoints["text"] = "Points: "
-        self.lblVolPoints['text'] = str(availableBalance['89'])
-        self.lblValPoints['text'] = str(pointsValue)
+            self.lblBalPoints["text"] = "Points: "
+            self.lblVolPoints['text'] = str(availableBalance['89'])
+            self.lblValPoints['text'] = str(pointsValue)
         
-        self.lblBTCValue['text'] = str(self.btcPrice)
-        self.lblTotalBal["text"] = "{:.4f}".format(availableBalance['3'] + ziftValue + pointsValue + dogeValue + ltcValue + xrpValue) + " BTC"
-        self.lblTotalVal["text"] = "{:.2f}".format((availableBalance['3'] + ziftValue + pointsValue + dogeValue + ltcValue + xrpValue) * self.btcPrice)  + " GBP"
+            self.lblBTCValue['text'] = str(self.btcPrice)
+            self.lblTotalBal["text"] = "{:.4f}".format(availableBalance['3'] + ziftValue + pointsValue + dogeValue + ltcValue + xrpValue) + " BTC"
+            self.lblTotalVal["text"] = "{:.2f}".format((availableBalance['3'] + ziftValue + pointsValue + dogeValue + ltcValue + xrpValue) * self.btcPrice)  + " GBP"
         
         #self.updateThread = threading.Thread(target= self.update)
         #self.updateThread.start()
+        except KeyError:
+            print("No Balance Data")
         return
 
     def createWidgets(self):
+        # Status Frame
+        self.statusFrame()
+                
         # Markets
         self.coins_marketFrame()
         
@@ -140,7 +152,7 @@ class MainFrame(Frame):
         self.btnMarketOverview = Button(self)
         self.btnMarketOverview['text'] = "Overview"
         self.btnMarketOverview['command'] = self.marketOverview
-        self.btnMarketOverview.grid({"row": "0", "column":"2", "columnspan":"1"})
+        self.btnMarketOverview.grid({"row": "1", "column":"2", "columnspan":"1"})
                         
         # Balances        
         self.coins_balFrame()
@@ -175,10 +187,21 @@ class MainFrame(Frame):
 
         return
       
+    def statusFrame(self):
+        self.statusLblFrame = LabelFrame(self)
+        self.statusLblFrame["text"] = "API Status"
+        self.statusLblFrame.grid({"row": "0", "column":"0", "columnspan":"3"})
+                
+        self.lblCrypsyAPI = Label(self.statusLblFrame)
+        self.lblCrypsyAPI["text"] = ""
+        self.lblCrypsyAPI.grid({"row": "0", "column":"0"})
+                              
+        return
+      
     def coins_marketFrame(self):
         self.marketsLblFrame = LabelFrame(self)
         self.marketsLblFrame["text"] = "Markets"
-        self.marketsLblFrame.grid({"row": "0", "column":"0", "columnspan":"2"})
+        self.marketsLblFrame.grid({"row": "1", "column":"0", "columnspan":"2"})
         
         self.lblXRP = Label(self.marketsLblFrame)
         self.lblXRP["text"] = "Ripple"
