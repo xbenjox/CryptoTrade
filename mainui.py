@@ -316,7 +316,7 @@ class MainFrame(Frame):
     def total_balFrame(self):
         self.balLblFrame = LabelFrame(self)
         self.balLblFrame["text"] = "Total Value"
-        self.balLblFrame.grid({"row": "30", "column":"0", "columnspan":"3"})
+        self.balLblFrame.grid({"row": "30", "column":"0", "columnspan":"4"})
                 
         self.lblTotalBal = Label(self.balLblFrame)
         self.lblTotalBal["text"] = ""
@@ -337,7 +337,7 @@ class MainFrame(Frame):
         self.coinsbalLblFrame = LabelFrame(self)
         self.coinsbalLblFrame["text"] = "Coin Balances"
         self.coinsbalLblFrame["font"] = self.BIG_FONT
-        self.coinsbalLblFrame.grid({"row": "20", "column": "0", "columnspan":"3"})
+        self.coinsbalLblFrame.grid({"row": "20", "column": "0", "columnspan":"4"})
                 
         self.lblHdrCurrency = Label(self.coinsbalLblFrame)
         self.lblHdrCurrency["text"] = "Currency"
