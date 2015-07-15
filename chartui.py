@@ -93,7 +93,8 @@ class ChartUI(Toplevel):
         aMACD = f.add_subplot(413, sharex=self.aPrice)
         aSto = f.add_subplot(414, sharex=self.aPrice)
 
-        self.aPrice.text(0.5,0.8,'Price Action', horizontalalignment='center', verticalalignment='center')
+        #self.aPrice.text(0.5,0.5,'Price Action')
+        self.aPrice.text(0.1,0.9,'Price Action', horizontalalignment='center', verticalalignment='center', transform=self.aPrice.transAxes)
         #self.aPrice.text(0.5,0.8,'Price Action', horizontalalignment='center', verticalalignment='center')
                               
 	                       
@@ -104,6 +105,11 @@ class ChartUI(Toplevel):
           self.fs.trend = "down"
         else:
           self.fs.trend = "up"
+        
+        quotes = zip(self.dates, self.op, self.hp, self.lp, self.cp)
+        print(quotes)
+        
+        mfinance.candlestick_ohlc(self.aPrice, quotes, width=0.6)
         
         self.aPrice.plot_date(self.dates, self.cp, '-')
         #self.a.plot_date(self.dates, self.hp, '-')
