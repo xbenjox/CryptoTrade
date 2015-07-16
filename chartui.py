@@ -111,7 +111,7 @@ class ChartUI(Toplevel):
         
         mfinance.candlestick_ohlc(self.aPrice, quotes, width=0.6)
         
-        self.aPrice.plot_date(self.dates, self.cp, '-')
+        #self.aPrice.plot_date(self.dates, self.cp, '-')
         #self.a.plot_date(self.dates, self.hp, '-')
         #self.a.plot_date(self.dates, self.lp, '-')
         self.aPrice.plot_date(self.dates, sma, '-')
