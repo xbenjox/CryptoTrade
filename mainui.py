@@ -10,6 +10,7 @@ from CoinDesk import CoinDesk
 from chartui import ChartUI
 from orderbookui import TradeHistUI
 from capitalui import CapitalUI
+from balancesui import BalanceUI
 from marketoverviewui import MarketOverviewUI
 
 from dataui import DataUI
@@ -86,10 +87,13 @@ class MainFrame(Frame):
         
         # Get Balances
         try:
-            balances = self.c.balances()
-            availableBalance = balances['data']['available']
+            self.balances = self.c.balances()
+            availableBalance = self.balances['data']['available']
             #print(availableBalance)
-            heldBalance = balances['data']['held']
+            heldBalance = self.balances['data']['held']
+            
+            print("Available Balances: ")
+            print(availableBalance)
                         
             # Calculate Gross Balances
             gross_balances = Counter()
@@ -152,11 +156,16 @@ class MainFrame(Frame):
         self.btnMarketOverview = Button(self)
         self.btnMarketOverview['text'] = "Overview"
         self.btnMarketOverview['command'] = self.marketOverview
-        self.btnMarketOverview.grid({"row": "1", "column":"2", "columnspan":"1"})
+        self.btnMarketOverview.grid({"row": "1", "column":"3", "columnspan":"1"})
                         
         # Balances        
         self.coins_balFrame()
         
+        self.btnBalanceDetail = Button(self)
+        self.btnBalanceDetail['text'] = "Balance Detail"
+        self.btnBalanceDetail['command'] = self.balanceDetail
+        self.btnBalanceDetail.grid({"row": "20", "column":"3", "columnspan":"1"})
+                
         # Values
         self.total_balFrame()
         
@@ -337,7 +346,7 @@ class MainFrame(Frame):
         self.coinsbalLblFrame = LabelFrame(self)
         self.coinsbalLblFrame["text"] = "Coin Balances"
         self.coinsbalLblFrame["font"] = self.BIG_FONT
-        self.coinsbalLblFrame.grid({"row": "20", "column": "0", "columnspan":"4"})
+        self.coinsbalLblFrame.grid({"row": "20", "column": "0", "columnspan":"3"})
                 
         self.lblHdrCurrency = Label(self.coinsbalLblFrame)
         self.lblHdrCurrency["text"] = "Currency"
@@ -455,6 +464,11 @@ class MainFrame(Frame):
     def marketOverview(self):
       chart = MarketOverviewUI(self, self.c, self.markets)
       return
+    
+    def balanceDetail(self):
+      balUI = BalanceUI(self, self.balances)
+      return
+    
     def OrderBook(self, cid, mid):
     
       trad_hist = TradeHistUI(self, cid, mid,self.c)
