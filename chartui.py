@@ -93,11 +93,8 @@ class ChartUI(Toplevel):
         aMACD = f.add_subplot(413, sharex=self.aPrice)
         aSto = f.add_subplot(414, sharex=self.aPrice)
 
-        #self.aPrice.text(0.5,0.5,'Price Action')
-        self.aPrice.text(0.1,0.9,'Price Action', horizontalalignment='center', verticalalignment='center', transform=self.aPrice.transAxes)
-        #self.aPrice.text(0.5,0.8,'Price Action', horizontalalignment='center', verticalalignment='center')
-                              
-	                       
+        self.aPrice.text(0.01,0.99,'Price Action', horizontalalignment='left', verticalalignment='top', transform=self.aPrice.transAxes)
+                               
         sma = self.fi.calcSMA(self.cp,25)
         smaSlow = self.fi.calcSMA(self.cp,50)
         
