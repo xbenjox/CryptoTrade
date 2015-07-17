@@ -10,6 +10,9 @@ class BalanceUI(Toplevel):
            
     self.balances = bal
     
+    print("Balances: " + str(self.balances))
+        
+    
     self.transient(parent)
         
     self.geometry("800x600+50+50")
@@ -20,8 +23,17 @@ class BalanceUI(Toplevel):
       
   def createWidgets(self):
     self.lblTrades = Label(self)
-    self.lblTrades['text'] = "Trades"
+    self.lblTrades['text'] = "Balances"
     self.lblTrades.grid({"row":"0"})
+    
+    # Create lable for each currency
+    r = 0
+    for k, v in self.balances['data']['available'].items():
+      if v != 0:
+        lbl = Label(self)
+        lbl['text'] = str(v)
+        lbl.grid({"row":r})
+        r += 1
         
     self.Close = Button(self)
     self.Close["text"] = "Close"
@@ -31,49 +43,7 @@ class BalanceUI(Toplevel):
     
     return 
   
-  def updateWidgets(self):
-   
-    
-    tradeText = ""
-    
-    dogePL = 0 
-    dogePLQty = 0
-    
-    xrpPL = 0
-    xrpPLQty = 0
-    
-          
-    self.lblDogePL['text'] = "Profit/Loss: " + str(dogePL)
-    self.lblXRPPL['text'] = "Profit/Loss: " + str(xrpPL)
-   
-    # Calculate required price for profit
-    
-    if dogePL < 0:
-      posDogePL = dogePL * -1
-      reqp = (posDogePL + ( posDogePL * 0.025 )) / dogePLQty
-    else:
-      reqp = 0
-      
-    reqp = math.ceil(reqp * 100000000) / 100000000
-    
-    if xrpPL < 0:
-      posXRPPL = xrpPL * -1
-      reqXRPp = (posXRPPL + (posXRPPL * 0.025)) / xrpPLQty
-    else:
-      reqXRPp = 0
-    
-    reqXRPp = math.ceil(reqXRPp * 100000000) / 100000000
-      
-    # Calculate current PL
-    print(self.last_trade_prices['DOGE/BTC'])
-    
-    self.lblDogeCurPL['text'] = "Current PL: " + "{:.8f}".format(dogePL + ((self.last_trade_prices['DOGE/BTC'] * dogePLQty) - (self.last_trade_prices['DOGE/BTC'] * dogePLQty * 0.025)))
-    self.lblXRPCurPL['text'] = "Current PL: " + "{:.8f}".format(xrpPL + ((self.last_trade_prices['XRP/BTC'] * xrpPLQty) - (self.last_trade_prices['XRP/BTC'] * xrpPLQty * 0.025)))
-        
-    self.lblDogeReqP['text'] = "{:.8f}".format(reqp)
-    self.lblXRPReqP['text'] = "{:.8f}".format(reqXRPp)
-    
-    self.lblTrades['text'] = tradeText
+  def updateWidgets(self):   
     
     return 
 
