@@ -5,14 +5,14 @@ import xml.etree.ElementTree as ET
 import math
 
 class BalanceUI(Toplevel):
-  def __init__(self, parent, bal):
+  def __init__(self, parent, bal, cur):
     Toplevel.__init__(self, parent)
            
     self.balances = bal
+    self.currencies = cur
     
     print("Balances: " + str(self.balances))
-        
-    
+            
     self.transient(parent)
         
     self.geometry("800x600+50+50")
@@ -30,8 +30,8 @@ class BalanceUI(Toplevel):
     r = 0
     for k, v in self.balances['data']['available'].items():
       if v != 0:
-        lbl = Label(self)
-        lbl['text'] = str(v)
+        lbl = Label(self.lblTrades)
+        lbl['text'] = str(k) + " : " + str(v)
         lbl.grid({"row":r})
         r += 1
         

@@ -54,6 +54,14 @@ class MainFrame(Frame):
         
         self.fs = FinStrategy()
         
+        # Get Currencies
+        try:
+          self.currencies = self.c.currencies()
+          print("Currencies: " + str(self.currencies))
+          
+        except:
+          print("Currency Exception.")
+        
         # Get market data, including last trade prices
         try:
             marketData = self.c.markets()
@@ -466,7 +474,7 @@ class MainFrame(Frame):
       return
     
     def balanceDetail(self):
-      balUI = BalanceUI(self, self.balances)
+      balUI = BalanceUI(self, self.balances, self.currencies)
       return
     
     def OrderBook(self, cid, mid):
