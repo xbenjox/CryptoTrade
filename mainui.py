@@ -57,7 +57,7 @@ class MainFrame(Frame):
         # Get Currencies
         try:
           self.currencies = self.c.currencies()
-          print("Currencies: " + str(self.currencies))
+          #print("Currencies: " + str(self.currencies))
           
         except:
           print("Currency Exception.")
@@ -100,8 +100,8 @@ class MainFrame(Frame):
             #print(availableBalance)
             heldBalance = self.balances['data']['held']
             
-            print("Available Balances: ")
-            print(availableBalance)
+            #print("Available Balances: ")
+            #print(availableBalance)
                         
             # Calculate Gross Balances
             gross_balances = Counter()

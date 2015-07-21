@@ -11,7 +11,22 @@ class BalanceUI(Toplevel):
     self.balances = bal
     self.currencies = cur
     
-    print("Balances: " + str(self.balances))
+    avail_bal_list = list()
+    
+    avail_bal_details = list()
+    
+    # reformat data
+    for k, v in self.balances['data']['available'].items():
+      if v != 0:
+        avail_bal_list.append({k:v})
+    
+    print(avail_bal_list)
+    
+    for c in self.currencies['data']:
+      if c['id'] in avail_bal_list:
+        avail_bal_details.append(c)
+    
+    print(avail_bal_details)
             
     self.transient(parent)
         
