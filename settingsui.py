@@ -12,15 +12,12 @@ class SettingsUI(Toplevel):
         
     #self.geometry("800x600+50+50")
     try:
-      self.tree = ET.parse('Data/settings.xml')
-      root = self.tree.getroot()
+      self.load_settings()
       
-      for keys in root.findall('keys'):
-        self.pubKey = keys.find('public').text
-        self.privKey = keys.find('private').text
-      
-    except:
-      print("Settings File Exception!")
+    except FileNotFoundError:
+      print("Settings File Not Found!")
+      self.createSettingsFile()
+      self.load_settings()
       
     self.createWidgets()    
     self.updateWidgets()                       
@@ -88,5 +85,28 @@ class SettingsUI(Toplevel):
     self.destroy()
     return
 
+  def createSettingsFile(self):
+    f = open("Data/settings.xml", 'w')
+    
+    f.write("""
+<?xml version="1.0"?>
+<settings>
+  <keys>
+    <public>Not Set</public>
+    <private>Not Set</private>
+  </keys>
+</settings>
+      """)
+    
+    f.close()
+    return
  
-  
+  def load_settings(self):
+    self.tree = ET.parse('Data/settings.xml')
+    root = self.tree.getroot()
+      
+    for keys in root.findall('keys'):
+      self.pubKey = keys.find('public').text
+      self.privKey = keys.find('private').text
+    
+    return
