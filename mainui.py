@@ -12,6 +12,7 @@ from orderbookui import TradeHistUI
 from capitalui import CapitalUI
 from balancesui import BalanceUI
 from marketoverviewui import MarketOverviewUI
+from settingsui import SettingsUI
 
 from dataui import DataUI
 import matplotlib.finance
@@ -154,6 +155,19 @@ class MainFrame(Frame):
         return
 
     def createWidgets(self):
+        # Menu
+        menubar = Menu(self)
+        
+        filemenu = Menu(menubar, tearoff=0)
+        filemenu.add_command(label="Exit", command=self.quit)
+        menubar.add_cascade(label="File", menu=filemenu)
+        
+        settingsmenu = Menu(menubar, tearoff=0)
+        settingsmenu.add_command(label="Settings...", command=self.settings_gui)
+        menubar.add_cascade(label="Settings", menu=settingsmenu)
+        
+        self.master.config(menu=menubar)
+      
         # Status Frame
         self.statusFrame()
                 
@@ -556,4 +570,8 @@ class MainFrame(Frame):
     def calcEMA(self, curPrice, periods, prevEMA):
       k = 2/(periods + 1)
       (curPrice * k) + (prevEMA * (1- k))
+      return 
+    
+    def settings_gui(self):
+      settings = SettingsUI(self)
       return 
