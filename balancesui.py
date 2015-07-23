@@ -11,22 +11,23 @@ class BalanceUI(Toplevel):
     self.balances = bal
     self.currencies = cur
     
-    avail_bal_list = list()
+    self.avail_bal_dict = dict()
     
-    avail_bal_details = list()
+    self.avail_bal_details = list()
     
     # reformat data
-    for k, v in self.balances['data']['available'].items():
+    #print(self.balances)
+    for k, v in self.balances.items():
       if v != 0:
-        avail_bal_list.append({k:v})
+        self.avail_bal_dict[k] = v
     
-    print(avail_bal_list)
+    #print("Available Balance List: " + str(self.avail_bal_dict))
     
     for c in self.currencies['data']:
-      if c['id'] in avail_bal_list:
-        avail_bal_details.append(c)
+      if c['id'] in self.avail_bal_dict:
+        self.avail_bal_details.append(c)
     
-    print(avail_bal_details)
+    #print("Available Balance Details: " + str(self.avail_bal_details))
             
     self.transient(parent)
         
@@ -37,18 +38,17 @@ class BalanceUI(Toplevel):
     return
       
   def createWidgets(self):
-    self.lblTrades = Label(self)
-    self.lblTrades['text'] = "Balances"
-    self.lblTrades.grid({"row":"0"})
+    self.lblBalFrame = LabelFrame(self)
+    self.lblBalFrame['text'] = "Balances"
+    self.lblBalFrame.grid({"row":"0"})
     
     # Create lable for each currency
     r = 0
-    for k, v in self.balances['data']['available'].items():
-      if v != 0:
-        lbl = Label(self.lblTrades)
-        lbl['text'] = str(k) + " : " + str(v)
-        lbl.grid({"row":r})
-        r += 1
+    for bd in self.avail_bal_details:
+      lbl = Label(self.lblBalFrame)
+      lbl['text'] = str(bd['name']) + " : " + str(bd['code'] + " : " + str(self.avail_bal_dict[bd['id']]))
+      lbl.grid({"row":r})
+      r += 1
         
     self.Close = Button(self)
     self.Close["text"] = "Close"

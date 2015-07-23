@@ -18,9 +18,9 @@ class SettingsUI(Toplevel):
       print("Settings File Not Found!")
       self.createSettingsFile()
       self.load_settings()
-      
-    self.createWidgets()    
-    self.updateWidgets()                       
+
+    self.createWidgets()
+    self.updateWidgets()
     return
       
   def createWidgets(self):

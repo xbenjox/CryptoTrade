@@ -19,10 +19,14 @@ import matplotlib.finance
 
 from finindicator import FinStrategy
 
+import xml.etree.ElementTree as ET
 
 class MainFrame(Frame):
     BIG_FONT = 12
     SMALL_FONT = 8
+    
+    pubKey = ""
+    privKey = ""
     
     markets = [473, 120, 3, 454, 132, 155]
     
@@ -42,12 +46,18 @@ class MainFrame(Frame):
         self.pack()
         self.createWidgets()
                
-        
-        f = open('keys.txt', 'r')
-        pubKey = f.readline().rstrip('\n')
-        privKey = f.readline().rstrip('\n')
-        f.close()
-        
+        # Load Cryptsy Keys
+        try:
+          self.tree = ET.parse('Data/settings.xml')
+          root = self.tree.getroot()
+      
+          for keys in root.findall('keys'):
+            pubKey = keys.find('public').text
+            privKey = keys.find('private').text
+            
+        except FileNotFoundError:
+          print("Settings File Not Found!!!")
+                       
         self.c = Cryptsy(str(pubKey), str(privKey))
         
         self.cd = CoinDesk()
@@ -65,11 +75,10 @@ class MainFrame(Frame):
         
         # Get market data, including last trade prices
         try:
-            marketData = self.c.markets()
-            
+            self.marketData = self.c.markets()
           
             self.last_trade_prices = {}
-            for market in marketData['data']:
+            for market in self.marketData['data']:
               self.last_trade_prices[market['label']] = market['last_trade']['price']
               if market['id'] == '473':
                 #print(market['24hr'])
@@ -105,15 +114,15 @@ class MainFrame(Frame):
             #print(availableBalance)
                         
             # Calculate Gross Balances
-            gross_balances = Counter()
-            gross_balances.update(availableBalance)
-            gross_balances.update(heldBalance)
+            self.gross_balances = Counter()
+            self.gross_balances.update(availableBalance)
+            self.gross_balances.update(heldBalance)
                      
             ziftValue = availableBalance['275'] * ziftLastTrade
             pointsValue = availableBalance['89'] * float(pointsLastTrade)
-            dogeValue = gross_balances['94'] * float(dogeLastTrade)
-            ltcValue = gross_balances['2'] * float(ltcLastTrade)
-            xrpValue = gross_balances['240'] * float(xrpLastTrade)
+            dogeValue = self.gross_balances['94'] * float(dogeLastTrade)
+            ltcValue = self.gross_balances['2'] * float(ltcLastTrade)
+            xrpValue = self.gross_balances['240'] * float(xrpLastTrade)
        
             self.lblBalBTC["text"] = "Bitcoin: "
             self.lblVolBTC["text"] = str(availableBalance['3'])
@@ -133,7 +142,7 @@ class MainFrame(Frame):
             self.lblValDSH["text"] = str(availableBalance['2'])
         
             self.lblBalDOG["text"] = "Dogecoin: "
-            self.lblVolDOG["text"] = str(gross_balances['94'])
+            self.lblVolDOG["text"] = str(self.gross_balances['94'])
             self.lblValDOG["text"] = str(dogeValue)
         
             self.lblBalZift["text"] = "ZiftrCoin: "
@@ -479,8 +488,13 @@ class MainFrame(Frame):
         self.lblValPoints.grid({"row": "8", "column":"2"})
         return 
 
-    def Chart(self, mid):
-      chart = ChartUI(self,mid,self.c, self.fs)
+    def Chart(self, mid):      
+      for m in self.marketData['data']:
+        if m['id'] == str(mid):
+          title = m['label']
+          
+      chart = ChartUI(self,mid,self.c, self.fs, title)
+      
       return
     
     def marketOverview(self):
@@ -488,7 +502,7 @@ class MainFrame(Frame):
       return
     
     def balanceDetail(self):
-      balUI = BalanceUI(self, self.balances, self.currencies)
+      balUI = BalanceUI(self, self.gross_balances, self.currencies)
       return
     
     def OrderBook(self, cid, mid):
