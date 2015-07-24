@@ -2,13 +2,17 @@ from tkinter import *
 
 import matplotlib
 import numpy as np
-#from sklearn import linear_model
+
+from os import listdir
+from os.path import isfile, join
 
 import xml.etree.ElementTree as ET
 
 import math
 
 class DataUI(Toplevel):
+  doge_data = list()
+  
   def __init__(self, parent, c_api):
     Toplevel.__init__(self, parent)
     
@@ -17,6 +21,8 @@ class DataUI(Toplevel):
     self.transient(parent)
         
     self.geometry("800x600+50+50")
+        
+    self.get_history_xml()
     
     self.createWidgets()
     
@@ -31,7 +37,7 @@ class DataUI(Toplevel):
     
     self.btnDogeCollect = Button(self)
     self.btnDogeCollect['text'] = "Collect Data"
-    self.btnDogeCollect['command'] = lambda: self.CollectData(132, "Day")
+    self.btnDogeCollect['command'] = lambda: self.CollectData(132, "day")
     self.btnDogeCollect.grid({"row":"1", "column":"1"})
     
     self.Close = Button(self)
@@ -54,22 +60,38 @@ class DataUI(Toplevel):
     self.destroy()
     return
 
-  def CollectData(self, mid, t):
-    data = self.c.market_ohlc(mid, interval=t, )
+  def CollectData(self, 
+                  mid: int, 
+                  t): 
+    root = self.tree.getroot()
     
-    print(data)
-        
-    return data
-  
+    for market in root.findall('market'):
+      print(mid)
+      print(market.get('id'))
+      if market.get('id') is str(mid):
+        data = self.c.market_ohlc(mid, interval=t, )
+    
+        print(data)
+    
+        for sample in data['data']:
+          print(sample)
+          date = sample['date']
+          timestamp = sample['timestamp']
+          high = sample['high']
+          low = sample['low']
+          open = sample['open']
+          close = sample['close']
+          volume = sample['volume']
+      
+    return
+
   def get_history_xml(self):
-    tree = ET.parse('sellpoints.xml')
+    self.tree = ET.parse('Data/Markets/markets_day_hist.xml')
     
-    root = tree.getroot()
+    root = self.tree.getroot()
     
-    for trade in root.findall('trade'):
-      cur = trade.find('currency').text
-      amt = trade.find('amount').text
-      cost = trade.find('cost').text
-      print(str(cur) + " " + str(amt) + " " + str(cost))
-    
+    for market in root.findall('market'):
+      print(market.get('label'))
+      
     return 
+  
