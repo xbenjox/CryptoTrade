@@ -6,13 +6,14 @@ import numpy as np
 from os import listdir
 from os.path import isfile, join
 
-import xml.etree.ElementTree as ET
+from lxml import etree as ET
 
 import math
 
 class DataUI(Toplevel):
+  markets = list()
   doge_data = list()
-  
+    
   def __init__(self, parent, c_api):
     Toplevel.__init__(self, parent)
     
@@ -62,17 +63,20 @@ class DataUI(Toplevel):
 
   def CollectData(self, 
                   mid: int, 
-                  t): 
+                  t: str): 
     root = self.tree.getroot()
     
     for market in root.findall('market'):
-      print(mid)
-      print(market.get('id'))
-      if market.get('id') is str(mid):
+      #print(mid)
+      #print(market.get('id'))
+      
+      if market.get('id') == str(mid):
         data = self.c.market_ohlc(mid, interval=t, )
-    
-        print(data)
-    
+        
+        #clear old data
+        for time in market.findall('time'):
+          market.remove(time)
+          
         for sample in data['data']:
           print(sample)
           date = sample['date']
@@ -82,15 +86,35 @@ class DataUI(Toplevel):
           open = sample['open']
           close = sample['close']
           volume = sample['volume']
-      
+          
+          element = ET.Element('date')
+          element.set('date', date)
+                    
+          ET.SubElement(element, 'timestamp').text = str(timestamp)
+          
+          ET.SubElement(element, 'high').text = str(high)
+          
+          ET.SubElement(element, 'low').text = str(low)
+          
+          ET.SubElement(element, 'open').text = str(open)
+          
+          ET.SubElement(element, 'close').text = str(close)
+          
+          ET.SubElement(element, 'volume').text = str(volume)
+          
+          market.append(element)
+    
+    self.tree.write('Data/Markets/markets_day_hist.xml', pretty_print=True)
     return
 
   def get_history_xml(self):
-    self.tree = ET.parse('Data/Markets/markets_day_hist.xml')
+    parser = ET.XMLParser(remove_blank_text=True)
+    
+    self.tree = ET.parse('Data/Markets/markets_day_hist.xml', parser)
     
     root = self.tree.getroot()
     
-    for market in root.findall('market'):
+    for market in root.findall('market'): 
       print(market.get('label'))
       
     return 

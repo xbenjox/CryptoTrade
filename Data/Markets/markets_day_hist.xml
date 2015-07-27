@@ -1,16 +1,1604 @@
-<history market='Doge/BTC'>
-  <market label='Doge/BTC' id='132'>
-    <time t="02/01/2015 11:00">
-      <open>Dogecoin</open>
-      <high>10000</high>
-      <low>0.0000691725</low>
-      <close>0.0000691725</close>
-    </time>
-    <time t='02/01/2015 12:00'>
-      <open>Dogecoin</open>
-      <high>10000</high>
-      <low>0.0000691725</low>
-      <close>0.0000691725</close>
-    </time>
+<history>
+  <market id="132" label="Doge/BTC">
+    <date date="2015-07-27 00:00:00">
+      <timestamp>1437969600</timestamp>
+      <high>6.5e-07</high>
+      <low>6.2e-07</low>
+      <open>6.3e-07</open>
+      <close>6.4e-07</close>
+      <volume>77168353.345334</volume>
+    </date>
+    <date date="2015-07-26 00:00:00">
+      <timestamp>1437883200</timestamp>
+      <high>6.6e-07</high>
+      <low>6.2e-07</low>
+      <open>6.6e-07</open>
+      <close>6.3e-07</close>
+      <volume>72145690.960316</volume>
+    </date>
+    <date date="2015-07-25 00:00:00">
+      <timestamp>1437796800</timestamp>
+      <high>6.8e-07</high>
+      <low>6.5e-07</low>
+      <open>6.7e-07</open>
+      <close>6.5e-07</close>
+      <volume>64952271.484104</volume>
+    </date>
+    <date date="2015-07-24 00:00:00">
+      <timestamp>1437710400</timestamp>
+      <high>6.9e-07</high>
+      <low>6.3e-07</low>
+      <open>6.5e-07</open>
+      <close>6.7e-07</close>
+      <volume>180326480.2452</volume>
+    </date>
+    <date date="2015-07-23 00:00:00">
+      <timestamp>1437624000</timestamp>
+      <high>6.8e-07</high>
+      <low>6.3e-07</low>
+      <open>6.7e-07</open>
+      <close>6.4e-07</close>
+      <volume>227846102.62793</volume>
+    </date>
+    <date date="2015-07-22 00:00:00">
+      <timestamp>1437537600</timestamp>
+      <high>7e-07</high>
+      <low>6.1e-07</low>
+      <open>6.1e-07</open>
+      <close>6.6e-07</close>
+      <volume>213581354.90226</volume>
+    </date>
+    <date date="2015-07-21 00:00:00">
+      <timestamp>1437451200</timestamp>
+      <high>6.3e-07</high>
+      <low>6.1e-07</low>
+      <open>6.3e-07</open>
+      <close>6.1e-07</close>
+      <volume>62309021.066693</volume>
+    </date>
+    <date date="2015-07-20 00:00:00">
+      <timestamp>1437364800</timestamp>
+      <high>6.3e-07</high>
+      <low>6.1e-07</low>
+      <open>6.3e-07</open>
+      <close>6.2e-07</close>
+      <volume>71638124.522104</volume>
+    </date>
+    <date date="2015-07-19 00:00:00">
+      <timestamp>1437278400</timestamp>
+      <high>6.5e-07</high>
+      <low>6.1e-07</low>
+      <open>6.5e-07</open>
+      <close>6.2e-07</close>
+      <volume>49297096.159556</volume>
+    </date>
+    <date date="2015-07-18 00:00:00">
+      <timestamp>1437192000</timestamp>
+      <high>6.6e-07</high>
+      <low>6.4e-07</low>
+      <open>6.5e-07</open>
+      <close>6.5e-07</close>
+      <volume>44506475.018512</volume>
+    </date>
+    <date date="2015-07-17 00:00:00">
+      <timestamp>1437105600</timestamp>
+      <high>6.5e-07</high>
+      <low>6.3e-07</low>
+      <open>6.4e-07</open>
+      <close>6.5e-07</close>
+      <volume>78240727.909186</volume>
+    </date>
+    <date date="2015-07-16 00:00:00">
+      <timestamp>1437019200</timestamp>
+      <high>6.6e-07</high>
+      <low>6e-07</low>
+      <open>6.4e-07</open>
+      <close>6.4e-07</close>
+      <volume>180414259.65083</volume>
+    </date>
+    <date date="2015-07-15 00:00:00">
+      <timestamp>1436932800</timestamp>
+      <high>6.7e-07</high>
+      <low>6.4e-07</low>
+      <open>6.7e-07</open>
+      <close>6.4e-07</close>
+      <volume>111994069.35581</volume>
+    </date>
+    <date date="2015-07-14 00:00:00">
+      <timestamp>1436846400</timestamp>
+      <high>6.8e-07</high>
+      <low>6.5e-07</low>
+      <open>6.8e-07</open>
+      <close>6.7e-07</close>
+      <volume>69029438.588759</volume>
+    </date>
+    <date date="2015-07-13 00:00:00">
+      <timestamp>1436760000</timestamp>
+      <high>7e-07</high>
+      <low>6.5e-07</low>
+      <open>6.7e-07</open>
+      <close>6.8e-07</close>
+      <volume>120509888.65313</volume>
+    </date>
+    <date date="2015-07-12 00:00:00">
+      <timestamp>1436673600</timestamp>
+      <high>6.7e-07</high>
+      <low>6.5e-07</low>
+      <open>6.6e-07</open>
+      <close>6.6e-07</close>
+      <volume>128658877.1458</volume>
+    </date>
+    <date date="2015-07-11 00:00:00">
+      <timestamp>1436587200</timestamp>
+      <high>7.1e-07</high>
+      <low>6.4e-07</low>
+      <open>7.1e-07</open>
+      <close>6.6e-07</close>
+      <volume>248271455.3459</volume>
+    </date>
+    <date date="2015-07-10 00:00:00">
+      <timestamp>1436500800</timestamp>
+      <high>8e-07</high>
+      <low>6.8e-07</low>
+      <open>7.4e-07</open>
+      <close>7e-07</close>
+      <volume>474053320.87916</volume>
+    </date>
+    <date date="2015-07-09 00:00:00">
+      <timestamp>1436414400</timestamp>
+      <high>7.7e-07</high>
+      <low>6.9e-07</low>
+      <open>7.1e-07</open>
+      <close>7.5e-07</close>
+      <volume>279962779.93674</volume>
+    </date>
+    <date date="2015-07-08 00:00:00">
+      <timestamp>1436328000</timestamp>
+      <high>7.1e-07</high>
+      <low>6.8e-07</low>
+      <open>7e-07</open>
+      <close>7.1e-07</close>
+      <volume>139870860.64624</volume>
+    </date>
+    <date date="2015-07-07 00:00:00">
+      <timestamp>1436241600</timestamp>
+      <high>7.1e-07</high>
+      <low>6.9e-07</low>
+      <open>6.9e-07</open>
+      <close>7e-07</close>
+      <volume>59488258.479578</volume>
+    </date>
+    <date date="2015-07-06 00:00:00">
+      <timestamp>1436155200</timestamp>
+      <high>7.2e-07</high>
+      <low>6.9e-07</low>
+      <open>7.2e-07</open>
+      <close>7e-07</close>
+      <volume>81422987.640026</volume>
+    </date>
+    <date date="2015-07-05 00:00:00">
+      <timestamp>1436068800</timestamp>
+      <high>7.4e-07</high>
+      <low>7e-07</low>
+      <open>7.3e-07</open>
+      <close>7.2e-07</close>
+      <volume>139204561.66507</volume>
+    </date>
+    <date date="2015-07-04 00:00:00">
+      <timestamp>1435982400</timestamp>
+      <high>7.5e-07</high>
+      <low>7.3e-07</low>
+      <open>7.5e-07</open>
+      <close>7.4e-07</close>
+      <volume>92515525.512114</volume>
+    </date>
+    <date date="2015-07-03 00:00:00">
+      <timestamp>1435896000</timestamp>
+      <high>7.6e-07</high>
+      <low>7.4e-07</low>
+      <open>7.4e-07</open>
+      <close>7.5e-07</close>
+      <volume>57911085.303024</volume>
+    </date>
+    <date date="2015-07-02 00:00:00">
+      <timestamp>1435809600</timestamp>
+      <high>7.6e-07</high>
+      <low>7.3e-07</low>
+      <open>7.4e-07</open>
+      <close>7.5e-07</close>
+      <volume>89840867.777219</volume>
+    </date>
+    <date date="2015-07-01 00:00:00">
+      <timestamp>1435723200</timestamp>
+      <high>7.6e-07</high>
+      <low>7.2e-07</low>
+      <open>7.4e-07</open>
+      <close>7.3e-07</close>
+      <volume>101807813.40413</volume>
+    </date>
+    <date date="2015-06-30 00:00:00">
+      <timestamp>1435636800</timestamp>
+      <high>7.7e-07</high>
+      <low>7.3e-07</low>
+      <open>7.7e-07</open>
+      <close>7.4e-07</close>
+      <volume>243888627.56944</volume>
+    </date>
+    <date date="2015-06-29 00:00:00">
+      <timestamp>1435550400</timestamp>
+      <high>7.8e-07</high>
+      <low>7.3e-07</low>
+      <open>7.6e-07</open>
+      <close>7.6e-07</close>
+      <volume>194220670.24802</volume>
+    </date>
+    <date date="2015-06-28 00:00:00">
+      <timestamp>1435464000</timestamp>
+      <high>7.8e-07</high>
+      <low>7.4e-07</low>
+      <open>7.7e-07</open>
+      <close>7.5e-07</close>
+      <volume>96640773.817524</volume>
+    </date>
+    <date date="2015-06-27 00:00:00">
+      <timestamp>1435377600</timestamp>
+      <high>7.9e-07</high>
+      <low>7.5e-07</low>
+      <open>7.5e-07</open>
+      <close>7.7e-07</close>
+      <volume>83364935.328869</volume>
+    </date>
+    <date date="2015-06-26 00:00:00">
+      <timestamp>1435291200</timestamp>
+      <high>7.7e-07</high>
+      <low>7.4e-07</low>
+      <open>7.7e-07</open>
+      <close>7.6e-07</close>
+      <volume>81778433.312044</volume>
+    </date>
+    <date date="2015-06-25 00:00:00">
+      <timestamp>1435204800</timestamp>
+      <high>7.8e-07</high>
+      <low>7.1e-07</low>
+      <open>7.3e-07</open>
+      <close>7.7e-07</close>
+      <volume>128270138.2531</volume>
+    </date>
+    <date date="2015-06-24 00:00:00">
+      <timestamp>1435118400</timestamp>
+      <high>7.8e-07</high>
+      <low>7.2e-07</low>
+      <open>7.6e-07</open>
+      <close>7.2e-07</close>
+      <volume>160123175.10001</volume>
+    </date>
+    <date date="2015-06-23 00:00:00">
+      <timestamp>1435032000</timestamp>
+      <high>8e-07</high>
+      <low>7.5e-07</low>
+      <open>8e-07</open>
+      <close>7.5e-07</close>
+      <volume>146453097.07131</volume>
+    </date>
+    <date date="2015-06-22 00:00:00">
+      <timestamp>1434945600</timestamp>
+      <high>8.2e-07</high>
+      <low>7.9e-07</low>
+      <open>8.1e-07</open>
+      <close>8e-07</close>
+      <volume>97214942.961124</volume>
+    </date>
+    <date date="2015-06-21 00:00:00">
+      <timestamp>1434859200</timestamp>
+      <high>8.4e-07</high>
+      <low>8e-07</low>
+      <open>8.2e-07</open>
+      <close>8.1e-07</close>
+      <volume>92757479.675681</volume>
+    </date>
+    <date date="2015-06-20 00:00:00">
+      <timestamp>1434772800</timestamp>
+      <high>8.4e-07</high>
+      <low>7.7e-07</low>
+      <open>7.8e-07</open>
+      <close>8.1e-07</close>
+      <volume>116662033.09209</volume>
+    </date>
+    <date date="2015-06-19 00:00:00">
+      <timestamp>1434686400</timestamp>
+      <high>8.9e-07</high>
+      <low>7.7e-07</low>
+      <open>8.3e-07</open>
+      <close>7.9e-07</close>
+      <volume>332245316.58908</volume>
+    </date>
+    <date date="2015-06-18 00:00:00">
+      <timestamp>1434600000</timestamp>
+      <high>8.4e-07</high>
+      <low>7.8e-07</low>
+      <open>8.1e-07</open>
+      <close>8.3e-07</close>
+      <volume>192866369.86929</volume>
+    </date>
+    <date date="2015-06-17 00:00:00">
+      <timestamp>1434513600</timestamp>
+      <high>8.6e-07</high>
+      <low>7.5e-07</low>
+      <open>7.7e-07</open>
+      <close>8e-07</close>
+      <volume>451303098.90581</volume>
+    </date>
+    <date date="2015-06-16 00:00:00">
+      <timestamp>1434427200</timestamp>
+      <high>7.8e-07</high>
+      <low>7e-07</low>
+      <open>7.1e-07</open>
+      <close>7.6e-07</close>
+      <volume>315208887.35745</volume>
+    </date>
+    <date date="2015-06-15 00:00:00">
+      <timestamp>1434340800</timestamp>
+      <high>7.1e-07</high>
+      <low>6.9e-07</low>
+      <open>7e-07</open>
+      <close>7e-07</close>
+      <volume>91391050.636743</volume>
+    </date>
+    <date date="2015-06-14 00:00:00">
+      <timestamp>1434254400</timestamp>
+      <high>7.3e-07</high>
+      <low>6.9e-07</low>
+      <open>7.1e-07</open>
+      <close>6.9e-07</close>
+      <volume>181213033.39058</volume>
+    </date>
+    <date date="2015-06-13 00:00:00">
+      <timestamp>1434168000</timestamp>
+      <high>7.1e-07</high>
+      <low>6.6e-07</low>
+      <open>6.8e-07</open>
+      <close>7.1e-07</close>
+      <volume>171848258.35287</volume>
+    </date>
+    <date date="2015-06-12 00:00:00">
+      <timestamp>1434081600</timestamp>
+      <high>6.8e-07</high>
+      <low>6.6e-07</low>
+      <open>6.7e-07</open>
+      <close>6.8e-07</close>
+      <volume>75416347.617756</volume>
+    </date>
+    <date date="2015-06-11 00:00:00">
+      <timestamp>1433995200</timestamp>
+      <high>6.8e-07</high>
+      <low>6.5e-07</low>
+      <open>6.8e-07</open>
+      <close>6.7e-07</close>
+      <volume>134956762.05139</volume>
+    </date>
+    <date date="2015-06-10 00:00:00">
+      <timestamp>1433908800</timestamp>
+      <high>6.9e-07</high>
+      <low>6.5e-07</low>
+      <open>6.9e-07</open>
+      <close>6.8e-07</close>
+      <volume>179570500.01032</volume>
+    </date>
+    <date date="2015-06-09 00:00:00">
+      <timestamp>1433822400</timestamp>
+      <high>7.2e-07</high>
+      <low>6.8e-07</low>
+      <open>7.1e-07</open>
+      <close>6.9e-07</close>
+      <volume>139112896.97448</volume>
+    </date>
+    <date date="2015-06-08 00:00:00">
+      <timestamp>1433736000</timestamp>
+      <high>7.1e-07</high>
+      <low>6.7e-07</low>
+      <open>6.9e-07</open>
+      <close>7e-07</close>
+      <volume>129056089.72088</volume>
+    </date>
+    <date date="2015-06-07 00:00:00">
+      <timestamp>1433649600</timestamp>
+      <high>7e-07</high>
+      <low>6.8e-07</low>
+      <open>6.9e-07</open>
+      <close>6.8e-07</close>
+      <volume>105398593.13243</volume>
+    </date>
+    <date date="2015-06-06 00:00:00">
+      <timestamp>1433563200</timestamp>
+      <high>7e-07</high>
+      <low>6.7e-07</low>
+      <open>6.8e-07</open>
+      <close>6.9e-07</close>
+      <volume>99656536.343952</volume>
+    </date>
+    <date date="2015-06-05 00:00:00">
+      <timestamp>1433476800</timestamp>
+      <high>6.8e-07</high>
+      <low>6.6e-07</low>
+      <open>6.7e-07</open>
+      <close>6.8e-07</close>
+      <volume>90154113.412416</volume>
+    </date>
+    <date date="2015-06-04 00:00:00">
+      <timestamp>1433390400</timestamp>
+      <high>6.8e-07</high>
+      <low>6.5e-07</low>
+      <open>6.7e-07</open>
+      <close>6.6e-07</close>
+      <volume>84240155.222808</volume>
+    </date>
+    <date date="2015-06-03 00:00:00">
+      <timestamp>1433304000</timestamp>
+      <high>7e-07</high>
+      <low>6.5e-07</low>
+      <open>7e-07</open>
+      <close>6.7e-07</close>
+      <volume>240733965.852</volume>
+    </date>
+    <date date="2015-06-02 00:00:00">
+      <timestamp>1433217600</timestamp>
+      <high>7.4e-07</high>
+      <low>5.9e-07</low>
+      <open>6.5e-07</open>
+      <close>7e-07</close>
+      <volume>752153940.89774</volume>
+    </date>
+    <date date="2015-06-01 00:00:00">
+      <timestamp>1433131200</timestamp>
+      <high>6.7e-07</high>
+      <low>6.3e-07</low>
+      <open>6.6e-07</open>
+      <close>6.4e-07</close>
+      <volume>256290606.82072</volume>
+    </date>
+    <date date="2015-05-31 00:00:00">
+      <timestamp>1433044800</timestamp>
+      <high>7.3e-07</high>
+      <low>6.5e-07</low>
+      <open>7.1e-07</open>
+      <close>6.5e-07</close>
+      <volume>227490952.40248</volume>
+    </date>
+    <date date="2015-05-30 00:00:00">
+      <timestamp>1432958400</timestamp>
+      <high>7.3e-07</high>
+      <low>6.6e-07</low>
+      <open>7.3e-07</open>
+      <close>7e-07</close>
+      <volume>500307461.82848</volume>
+    </date>
+    <date date="2015-05-29 00:00:00">
+      <timestamp>1432872000</timestamp>
+      <high>8.4e-07</high>
+      <low>7.1e-07</low>
+      <open>8.1e-07</open>
+      <close>7.2e-07</close>
+      <volume>550961397.89257</volume>
+    </date>
+    <date date="2015-05-28 00:00:00">
+      <timestamp>1432785600</timestamp>
+      <high>8.7e-07</high>
+      <low>7.3e-07</low>
+      <open>7.5e-07</open>
+      <close>8e-07</close>
+      <volume>735244703.88588</volume>
+    </date>
+    <date date="2015-05-27 00:00:00">
+      <timestamp>1432699200</timestamp>
+      <high>8e-07</high>
+      <low>6.7e-07</low>
+      <open>7.2e-07</open>
+      <close>7.4e-07</close>
+      <volume>737011843.82371</volume>
+    </date>
+    <date date="2015-05-26 00:00:00">
+      <timestamp>1432612800</timestamp>
+      <high>7.2e-07</high>
+      <low>5.8e-07</low>
+      <open>6e-07</open>
+      <close>7.1e-07</close>
+      <volume>575684647.77993</volume>
+    </date>
+    <date date="2015-05-25 00:00:00">
+      <timestamp>1432526400</timestamp>
+      <high>6.1e-07</high>
+      <low>5.8e-07</low>
+      <open>5.9e-07</open>
+      <close>5.9e-07</close>
+      <volume>102592046.4888</volume>
+    </date>
+    <date date="2015-05-24 00:00:00">
+      <timestamp>1432440000</timestamp>
+      <high>6e-07</high>
+      <low>5.5e-07</low>
+      <open>5.5e-07</open>
+      <close>5.8e-07</close>
+      <volume>203842235.75626</volume>
+    </date>
+    <date date="2015-05-23 00:00:00">
+      <timestamp>1432353600</timestamp>
+      <high>6e-07</high>
+      <low>5.4e-07</low>
+      <open>5.9e-07</open>
+      <close>5.5e-07</close>
+      <volume>322061719.9112</volume>
+    </date>
+    <date date="2015-05-22 00:00:00">
+      <timestamp>1432267200</timestamp>
+      <high>6e-07</high>
+      <low>5.3e-07</low>
+      <open>5.5e-07</open>
+      <close>6e-07</close>
+      <volume>439614268.78299</volume>
+    </date>
+    <date date="2015-05-21 00:00:00">
+      <timestamp>1432180800</timestamp>
+      <high>5.8e-07</high>
+      <low>5.4e-07</low>
+      <open>5.6e-07</open>
+      <close>5.5e-07</close>
+      <volume>247847023.67996</volume>
+    </date>
+    <date date="2015-05-20 00:00:00">
+      <timestamp>1432094400</timestamp>
+      <high>5.9e-07</high>
+      <low>5.3e-07</low>
+      <open>5.4e-07</open>
+      <close>5.6e-07</close>
+      <volume>413122645.8286</volume>
+    </date>
+    <date date="2015-05-19 00:00:00">
+      <timestamp>1432008000</timestamp>
+      <high>5.5e-07</high>
+      <low>4.8e-07</low>
+      <open>4.9e-07</open>
+      <close>5.4e-07</close>
+      <volume>233137199.91224</volume>
+    </date>
+    <date date="2015-05-18 00:00:00">
+      <timestamp>1431921600</timestamp>
+      <high>5e-07</high>
+      <low>4.8e-07</low>
+      <open>4.9e-07</open>
+      <close>4.9e-07</close>
+      <volume>59389906.37768</volume>
+    </date>
+    <date date="2015-05-17 00:00:00">
+      <timestamp>1431835200</timestamp>
+      <high>7.4e-07</high>
+      <low>3e-07</low>
+      <open>4.9e-07</open>
+      <close>4.8e-07</close>
+      <volume>37752239.969334</volume>
+    </date>
+    <date date="2015-05-16 00:00:00">
+      <timestamp>1431748800</timestamp>
+      <high>5.2e-07</high>
+      <low>4.8e-07</low>
+      <open>5.2e-07</open>
+      <close>4.9e-07</close>
+      <volume>90241384.124874</volume>
+    </date>
+    <date date="2015-05-15 00:00:00">
+      <timestamp>1431662400</timestamp>
+      <high>5.2e-07</high>
+      <low>4.8e-07</low>
+      <open>4.9e-07</open>
+      <close>5.1e-07</close>
+      <volume>168712697.94492</volume>
+    </date>
+    <date date="2015-05-14 00:00:00">
+      <timestamp>1431576000</timestamp>
+      <high>4.9e-07</high>
+      <low>4.4e-07</low>
+      <open>4.4e-07</open>
+      <close>4.8e-07</close>
+      <volume>296681433.248</volume>
+    </date>
+    <date date="2015-05-13 00:00:00">
+      <timestamp>1431489600</timestamp>
+      <high>4.8e-07</high>
+      <low>4.4e-07</low>
+      <open>4.6e-07</open>
+      <close>4.4e-07</close>
+      <volume>187366079.92987</volume>
+    </date>
+    <date date="2015-05-12 00:00:00">
+      <timestamp>1431403200</timestamp>
+      <high>5e-07</high>
+      <low>3.8e-07</low>
+      <open>3.8e-07</open>
+      <close>4.6e-07</close>
+      <volume>861691418.27914</volume>
+    </date>
+    <date date="2015-05-11 00:00:00">
+      <timestamp>1431316800</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.9e-07</close>
+      <volume>151300532.93375</volume>
+    </date>
+    <date date="2015-05-10 00:00:00">
+      <timestamp>1431230400</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.8e-07</open>
+      <close>3.7e-07</close>
+      <volume>261637451.84101</volume>
+    </date>
+    <date date="2015-05-09 00:00:00">
+      <timestamp>1431144000</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.8e-07</close>
+      <volume>145370104.55727</volume>
+    </date>
+    <date date="2015-05-08 00:00:00">
+      <timestamp>1431057600</timestamp>
+      <high>3.8e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.7e-07</close>
+      <volume>94353800.363994</volume>
+    </date>
+    <date date="2015-05-07 00:00:00">
+      <timestamp>1430971200</timestamp>
+      <high>3.8e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.7e-07</close>
+      <volume>94725687.544893</volume>
+    </date>
+    <date date="2015-05-06 00:00:00">
+      <timestamp>1430884800</timestamp>
+      <high>3.8e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.7e-07</close>
+      <volume>95005939.724252</volume>
+    </date>
+    <date date="2015-05-05 00:00:00">
+      <timestamp>1430798400</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.8e-07</close>
+      <volume>169477122.66817</volume>
+    </date>
+    <date date="2015-05-04 00:00:00">
+      <timestamp>1430712000</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.8e-07</close>
+      <volume>140756834.8846</volume>
+    </date>
+    <date date="2015-05-03 00:00:00">
+      <timestamp>1430625600</timestamp>
+      <high>4.2e-07</high>
+      <low>3.6e-07</low>
+      <open>4.1e-07</open>
+      <close>3.8e-07</close>
+      <volume>604336157.96932</volume>
+    </date>
+    <date date="2015-05-02 00:00:00">
+      <timestamp>1430539200</timestamp>
+      <high>4.3e-07</high>
+      <low>4.1e-07</low>
+      <open>4.1e-07</open>
+      <close>4.1e-07</close>
+      <volume>207285353.82866</volume>
+    </date>
+    <date date="2015-05-01 00:00:00">
+      <timestamp>1430452800</timestamp>
+      <high>4.4e-07</high>
+      <low>4.1e-07</low>
+      <open>4.3e-07</open>
+      <close>4.3e-07</close>
+      <volume>399567097.37887</volume>
+    </date>
+    <date date="2015-04-30 00:00:00">
+      <timestamp>1430366400</timestamp>
+      <high>4.4e-07</high>
+      <low>4.2e-07</low>
+      <open>4.3e-07</open>
+      <close>4.3e-07</close>
+      <volume>223560528.15266</volume>
+    </date>
+    <date date="2015-04-29 00:00:00">
+      <timestamp>1430280000</timestamp>
+      <high>4.5e-07</high>
+      <low>4.3e-07</low>
+      <open>4.4e-07</open>
+      <close>4.4e-07</close>
+      <volume>84509319.480086</volume>
+    </date>
+    <date date="2015-04-28 00:00:00">
+      <timestamp>1430193600</timestamp>
+      <high>4.5e-07</high>
+      <low>4.3e-07</low>
+      <open>4.5e-07</open>
+      <close>4.4e-07</close>
+      <volume>107714631.11989</volume>
+    </date>
+    <date date="2015-04-27 00:00:00">
+      <timestamp>1430107200</timestamp>
+      <high>4.7e-07</high>
+      <low>4.4e-07</low>
+      <open>4.6e-07</open>
+      <close>4.4e-07</close>
+      <volume>240187922.22619</volume>
+    </date>
+    <date date="2015-04-26 00:00:00">
+      <timestamp>1430020800</timestamp>
+      <high>4.6e-07</high>
+      <low>4.5e-07</low>
+      <open>4.6e-07</open>
+      <close>4.6e-07</close>
+      <volume>103994389.11588</volume>
+    </date>
+    <date date="2015-04-25 00:00:00">
+      <timestamp>1429934400</timestamp>
+      <high>4.6e-07</high>
+      <low>4.4e-07</low>
+      <open>4.5e-07</open>
+      <close>4.6e-07</close>
+      <volume>168085081.79216</volume>
+    </date>
+    <date date="2015-04-24 00:00:00">
+      <timestamp>1429848000</timestamp>
+      <high>4.7e-07</high>
+      <low>4.4e-07</low>
+      <open>4.7e-07</open>
+      <close>4.6e-07</close>
+      <volume>268148268.19595</volume>
+    </date>
+    <date date="2015-04-23 00:00:00">
+      <timestamp>1429761600</timestamp>
+      <high>4.7e-07</high>
+      <low>4.6e-07</low>
+      <open>4.7e-07</open>
+      <close>4.7e-07</close>
+      <volume>94384342.306722</volume>
+    </date>
+    <date date="2015-04-22 00:00:00">
+      <timestamp>1429675200</timestamp>
+      <high>4.7e-07</high>
+      <low>4.6e-07</low>
+      <open>4.7e-07</open>
+      <close>4.6e-07</close>
+      <volume>111957029.73095</volume>
+    </date>
+    <date date="2015-04-21 00:00:00">
+      <timestamp>1429588800</timestamp>
+      <high>4.7e-07</high>
+      <low>4.4e-07</low>
+      <open>4.7e-07</open>
+      <close>4.6e-07</close>
+      <volume>232251549.87299</volume>
+    </date>
+    <date date="2015-04-20 00:00:00">
+      <timestamp>1429502400</timestamp>
+      <high>4.8e-07</high>
+      <low>4.6e-07</low>
+      <open>4.7e-07</open>
+      <close>4.7e-07</close>
+      <volume>104520283.42974</volume>
+    </date>
+    <date date="2015-04-19 00:00:00">
+      <timestamp>1429416000</timestamp>
+      <high>4.8e-07</high>
+      <low>4.7e-07</low>
+      <open>4.8e-07</open>
+      <close>4.8e-07</close>
+      <volume>114525969.19315</volume>
+    </date>
+    <date date="2015-07-27 00:00:00">
+      <timestamp>1437969600</timestamp>
+      <high>6.5e-07</high>
+      <low>6.2e-07</low>
+      <open>6.3e-07</open>
+      <close>6.4e-07</close>
+      <volume>77168353.345334</volume>
+    </date>
+    <date date="2015-07-26 00:00:00">
+      <timestamp>1437883200</timestamp>
+      <high>6.6e-07</high>
+      <low>6.2e-07</low>
+      <open>6.6e-07</open>
+      <close>6.3e-07</close>
+      <volume>72145690.960316</volume>
+    </date>
+    <date date="2015-07-25 00:00:00">
+      <timestamp>1437796800</timestamp>
+      <high>6.8e-07</high>
+      <low>6.5e-07</low>
+      <open>6.7e-07</open>
+      <close>6.5e-07</close>
+      <volume>64952271.484104</volume>
+    </date>
+    <date date="2015-07-24 00:00:00">
+      <timestamp>1437710400</timestamp>
+      <high>6.9e-07</high>
+      <low>6.3e-07</low>
+      <open>6.5e-07</open>
+      <close>6.7e-07</close>
+      <volume>180326480.2452</volume>
+    </date>
+    <date date="2015-07-23 00:00:00">
+      <timestamp>1437624000</timestamp>
+      <high>6.8e-07</high>
+      <low>6.3e-07</low>
+      <open>6.7e-07</open>
+      <close>6.4e-07</close>
+      <volume>227846102.62793</volume>
+    </date>
+    <date date="2015-07-22 00:00:00">
+      <timestamp>1437537600</timestamp>
+      <high>7e-07</high>
+      <low>6.1e-07</low>
+      <open>6.1e-07</open>
+      <close>6.6e-07</close>
+      <volume>213581354.90226</volume>
+    </date>
+    <date date="2015-07-21 00:00:00">
+      <timestamp>1437451200</timestamp>
+      <high>6.3e-07</high>
+      <low>6.1e-07</low>
+      <open>6.3e-07</open>
+      <close>6.1e-07</close>
+      <volume>62309021.066693</volume>
+    </date>
+    <date date="2015-07-20 00:00:00">
+      <timestamp>1437364800</timestamp>
+      <high>6.3e-07</high>
+      <low>6.1e-07</low>
+      <open>6.3e-07</open>
+      <close>6.2e-07</close>
+      <volume>71638124.522104</volume>
+    </date>
+    <date date="2015-07-19 00:00:00">
+      <timestamp>1437278400</timestamp>
+      <high>6.5e-07</high>
+      <low>6.1e-07</low>
+      <open>6.5e-07</open>
+      <close>6.2e-07</close>
+      <volume>49297096.159556</volume>
+    </date>
+    <date date="2015-07-18 00:00:00">
+      <timestamp>1437192000</timestamp>
+      <high>6.6e-07</high>
+      <low>6.4e-07</low>
+      <open>6.5e-07</open>
+      <close>6.5e-07</close>
+      <volume>44506475.018512</volume>
+    </date>
+    <date date="2015-07-17 00:00:00">
+      <timestamp>1437105600</timestamp>
+      <high>6.5e-07</high>
+      <low>6.3e-07</low>
+      <open>6.4e-07</open>
+      <close>6.5e-07</close>
+      <volume>78240727.909186</volume>
+    </date>
+    <date date="2015-07-16 00:00:00">
+      <timestamp>1437019200</timestamp>
+      <high>6.6e-07</high>
+      <low>6e-07</low>
+      <open>6.4e-07</open>
+      <close>6.4e-07</close>
+      <volume>180414259.65083</volume>
+    </date>
+    <date date="2015-07-15 00:00:00">
+      <timestamp>1436932800</timestamp>
+      <high>6.7e-07</high>
+      <low>6.4e-07</low>
+      <open>6.7e-07</open>
+      <close>6.4e-07</close>
+      <volume>111994069.35581</volume>
+    </date>
+    <date date="2015-07-14 00:00:00">
+      <timestamp>1436846400</timestamp>
+      <high>6.8e-07</high>
+      <low>6.5e-07</low>
+      <open>6.8e-07</open>
+      <close>6.7e-07</close>
+      <volume>69029438.588759</volume>
+    </date>
+    <date date="2015-07-13 00:00:00">
+      <timestamp>1436760000</timestamp>
+      <high>7e-07</high>
+      <low>6.5e-07</low>
+      <open>6.7e-07</open>
+      <close>6.8e-07</close>
+      <volume>120509888.65313</volume>
+    </date>
+    <date date="2015-07-12 00:00:00">
+      <timestamp>1436673600</timestamp>
+      <high>6.7e-07</high>
+      <low>6.5e-07</low>
+      <open>6.6e-07</open>
+      <close>6.6e-07</close>
+      <volume>128658877.1458</volume>
+    </date>
+    <date date="2015-07-11 00:00:00">
+      <timestamp>1436587200</timestamp>
+      <high>7.1e-07</high>
+      <low>6.4e-07</low>
+      <open>7.1e-07</open>
+      <close>6.6e-07</close>
+      <volume>248271455.3459</volume>
+    </date>
+    <date date="2015-07-10 00:00:00">
+      <timestamp>1436500800</timestamp>
+      <high>8e-07</high>
+      <low>6.8e-07</low>
+      <open>7.4e-07</open>
+      <close>7e-07</close>
+      <volume>474053320.87916</volume>
+    </date>
+    <date date="2015-07-09 00:00:00">
+      <timestamp>1436414400</timestamp>
+      <high>7.7e-07</high>
+      <low>6.9e-07</low>
+      <open>7.1e-07</open>
+      <close>7.5e-07</close>
+      <volume>279962779.93674</volume>
+    </date>
+    <date date="2015-07-08 00:00:00">
+      <timestamp>1436328000</timestamp>
+      <high>7.1e-07</high>
+      <low>6.8e-07</low>
+      <open>7e-07</open>
+      <close>7.1e-07</close>
+      <volume>139870860.64624</volume>
+    </date>
+    <date date="2015-07-07 00:00:00">
+      <timestamp>1436241600</timestamp>
+      <high>7.1e-07</high>
+      <low>6.9e-07</low>
+      <open>6.9e-07</open>
+      <close>7e-07</close>
+      <volume>59488258.479578</volume>
+    </date>
+    <date date="2015-07-06 00:00:00">
+      <timestamp>1436155200</timestamp>
+      <high>7.2e-07</high>
+      <low>6.9e-07</low>
+      <open>7.2e-07</open>
+      <close>7e-07</close>
+      <volume>81422987.640026</volume>
+    </date>
+    <date date="2015-07-05 00:00:00">
+      <timestamp>1436068800</timestamp>
+      <high>7.4e-07</high>
+      <low>7e-07</low>
+      <open>7.3e-07</open>
+      <close>7.2e-07</close>
+      <volume>139204561.66507</volume>
+    </date>
+    <date date="2015-07-04 00:00:00">
+      <timestamp>1435982400</timestamp>
+      <high>7.5e-07</high>
+      <low>7.3e-07</low>
+      <open>7.5e-07</open>
+      <close>7.4e-07</close>
+      <volume>92515525.512114</volume>
+    </date>
+    <date date="2015-07-03 00:00:00">
+      <timestamp>1435896000</timestamp>
+      <high>7.6e-07</high>
+      <low>7.4e-07</low>
+      <open>7.4e-07</open>
+      <close>7.5e-07</close>
+      <volume>57911085.303024</volume>
+    </date>
+    <date date="2015-07-02 00:00:00">
+      <timestamp>1435809600</timestamp>
+      <high>7.6e-07</high>
+      <low>7.3e-07</low>
+      <open>7.4e-07</open>
+      <close>7.5e-07</close>
+      <volume>89840867.777219</volume>
+    </date>
+    <date date="2015-07-01 00:00:00">
+      <timestamp>1435723200</timestamp>
+      <high>7.6e-07</high>
+      <low>7.2e-07</low>
+      <open>7.4e-07</open>
+      <close>7.3e-07</close>
+      <volume>101807813.40413</volume>
+    </date>
+    <date date="2015-06-30 00:00:00">
+      <timestamp>1435636800</timestamp>
+      <high>7.7e-07</high>
+      <low>7.3e-07</low>
+      <open>7.7e-07</open>
+      <close>7.4e-07</close>
+      <volume>243888627.56944</volume>
+    </date>
+    <date date="2015-06-29 00:00:00">
+      <timestamp>1435550400</timestamp>
+      <high>7.8e-07</high>
+      <low>7.3e-07</low>
+      <open>7.6e-07</open>
+      <close>7.6e-07</close>
+      <volume>194220670.24802</volume>
+    </date>
+    <date date="2015-06-28 00:00:00">
+      <timestamp>1435464000</timestamp>
+      <high>7.8e-07</high>
+      <low>7.4e-07</low>
+      <open>7.7e-07</open>
+      <close>7.5e-07</close>
+      <volume>96640773.817524</volume>
+    </date>
+    <date date="2015-06-27 00:00:00">
+      <timestamp>1435377600</timestamp>
+      <high>7.9e-07</high>
+      <low>7.5e-07</low>
+      <open>7.5e-07</open>
+      <close>7.7e-07</close>
+      <volume>83364935.328869</volume>
+    </date>
+    <date date="2015-06-26 00:00:00">
+      <timestamp>1435291200</timestamp>
+      <high>7.7e-07</high>
+      <low>7.4e-07</low>
+      <open>7.7e-07</open>
+      <close>7.6e-07</close>
+      <volume>81778433.312044</volume>
+    </date>
+    <date date="2015-06-25 00:00:00">
+      <timestamp>1435204800</timestamp>
+      <high>7.8e-07</high>
+      <low>7.1e-07</low>
+      <open>7.3e-07</open>
+      <close>7.7e-07</close>
+      <volume>128270138.2531</volume>
+    </date>
+    <date date="2015-06-24 00:00:00">
+      <timestamp>1435118400</timestamp>
+      <high>7.8e-07</high>
+      <low>7.2e-07</low>
+      <open>7.6e-07</open>
+      <close>7.2e-07</close>
+      <volume>160123175.10001</volume>
+    </date>
+    <date date="2015-06-23 00:00:00">
+      <timestamp>1435032000</timestamp>
+      <high>8e-07</high>
+      <low>7.5e-07</low>
+      <open>8e-07</open>
+      <close>7.5e-07</close>
+      <volume>146453097.07131</volume>
+    </date>
+    <date date="2015-06-22 00:00:00">
+      <timestamp>1434945600</timestamp>
+      <high>8.2e-07</high>
+      <low>7.9e-07</low>
+      <open>8.1e-07</open>
+      <close>8e-07</close>
+      <volume>97214942.961124</volume>
+    </date>
+    <date date="2015-06-21 00:00:00">
+      <timestamp>1434859200</timestamp>
+      <high>8.4e-07</high>
+      <low>8e-07</low>
+      <open>8.2e-07</open>
+      <close>8.1e-07</close>
+      <volume>92757479.675681</volume>
+    </date>
+    <date date="2015-06-20 00:00:00">
+      <timestamp>1434772800</timestamp>
+      <high>8.4e-07</high>
+      <low>7.7e-07</low>
+      <open>7.8e-07</open>
+      <close>8.1e-07</close>
+      <volume>116662033.09209</volume>
+    </date>
+    <date date="2015-06-19 00:00:00">
+      <timestamp>1434686400</timestamp>
+      <high>8.9e-07</high>
+      <low>7.7e-07</low>
+      <open>8.3e-07</open>
+      <close>7.9e-07</close>
+      <volume>332245316.58908</volume>
+    </date>
+    <date date="2015-06-18 00:00:00">
+      <timestamp>1434600000</timestamp>
+      <high>8.4e-07</high>
+      <low>7.8e-07</low>
+      <open>8.1e-07</open>
+      <close>8.3e-07</close>
+      <volume>192866369.86929</volume>
+    </date>
+    <date date="2015-06-17 00:00:00">
+      <timestamp>1434513600</timestamp>
+      <high>8.6e-07</high>
+      <low>7.5e-07</low>
+      <open>7.7e-07</open>
+      <close>8e-07</close>
+      <volume>451303098.90581</volume>
+    </date>
+    <date date="2015-06-16 00:00:00">
+      <timestamp>1434427200</timestamp>
+      <high>7.8e-07</high>
+      <low>7e-07</low>
+      <open>7.1e-07</open>
+      <close>7.6e-07</close>
+      <volume>315208887.35745</volume>
+    </date>
+    <date date="2015-06-15 00:00:00">
+      <timestamp>1434340800</timestamp>
+      <high>7.1e-07</high>
+      <low>6.9e-07</low>
+      <open>7e-07</open>
+      <close>7e-07</close>
+      <volume>91391050.636743</volume>
+    </date>
+    <date date="2015-06-14 00:00:00">
+      <timestamp>1434254400</timestamp>
+      <high>7.3e-07</high>
+      <low>6.9e-07</low>
+      <open>7.1e-07</open>
+      <close>6.9e-07</close>
+      <volume>181213033.39058</volume>
+    </date>
+    <date date="2015-06-13 00:00:00">
+      <timestamp>1434168000</timestamp>
+      <high>7.1e-07</high>
+      <low>6.6e-07</low>
+      <open>6.8e-07</open>
+      <close>7.1e-07</close>
+      <volume>171848258.35287</volume>
+    </date>
+    <date date="2015-06-12 00:00:00">
+      <timestamp>1434081600</timestamp>
+      <high>6.8e-07</high>
+      <low>6.6e-07</low>
+      <open>6.7e-07</open>
+      <close>6.8e-07</close>
+      <volume>75416347.617756</volume>
+    </date>
+    <date date="2015-06-11 00:00:00">
+      <timestamp>1433995200</timestamp>
+      <high>6.8e-07</high>
+      <low>6.5e-07</low>
+      <open>6.8e-07</open>
+      <close>6.7e-07</close>
+      <volume>134956762.05139</volume>
+    </date>
+    <date date="2015-06-10 00:00:00">
+      <timestamp>1433908800</timestamp>
+      <high>6.9e-07</high>
+      <low>6.5e-07</low>
+      <open>6.9e-07</open>
+      <close>6.8e-07</close>
+      <volume>179570500.01032</volume>
+    </date>
+    <date date="2015-06-09 00:00:00">
+      <timestamp>1433822400</timestamp>
+      <high>7.2e-07</high>
+      <low>6.8e-07</low>
+      <open>7.1e-07</open>
+      <close>6.9e-07</close>
+      <volume>139112896.97448</volume>
+    </date>
+    <date date="2015-06-08 00:00:00">
+      <timestamp>1433736000</timestamp>
+      <high>7.1e-07</high>
+      <low>6.7e-07</low>
+      <open>6.9e-07</open>
+      <close>7e-07</close>
+      <volume>129056089.72088</volume>
+    </date>
+    <date date="2015-06-07 00:00:00">
+      <timestamp>1433649600</timestamp>
+      <high>7e-07</high>
+      <low>6.8e-07</low>
+      <open>6.9e-07</open>
+      <close>6.8e-07</close>
+      <volume>105398593.13243</volume>
+    </date>
+    <date date="2015-06-06 00:00:00">
+      <timestamp>1433563200</timestamp>
+      <high>7e-07</high>
+      <low>6.7e-07</low>
+      <open>6.8e-07</open>
+      <close>6.9e-07</close>
+      <volume>99656536.343952</volume>
+    </date>
+    <date date="2015-06-05 00:00:00">
+      <timestamp>1433476800</timestamp>
+      <high>6.8e-07</high>
+      <low>6.6e-07</low>
+      <open>6.7e-07</open>
+      <close>6.8e-07</close>
+      <volume>90154113.412416</volume>
+    </date>
+    <date date="2015-06-04 00:00:00">
+      <timestamp>1433390400</timestamp>
+      <high>6.8e-07</high>
+      <low>6.5e-07</low>
+      <open>6.7e-07</open>
+      <close>6.6e-07</close>
+      <volume>84240155.222808</volume>
+    </date>
+    <date date="2015-06-03 00:00:00">
+      <timestamp>1433304000</timestamp>
+      <high>7e-07</high>
+      <low>6.5e-07</low>
+      <open>7e-07</open>
+      <close>6.7e-07</close>
+      <volume>240733965.852</volume>
+    </date>
+    <date date="2015-06-02 00:00:00">
+      <timestamp>1433217600</timestamp>
+      <high>7.4e-07</high>
+      <low>5.9e-07</low>
+      <open>6.5e-07</open>
+      <close>7e-07</close>
+      <volume>752153940.89774</volume>
+    </date>
+    <date date="2015-06-01 00:00:00">
+      <timestamp>1433131200</timestamp>
+      <high>6.7e-07</high>
+      <low>6.3e-07</low>
+      <open>6.6e-07</open>
+      <close>6.4e-07</close>
+      <volume>256290606.82072</volume>
+    </date>
+    <date date="2015-05-31 00:00:00">
+      <timestamp>1433044800</timestamp>
+      <high>7.3e-07</high>
+      <low>6.5e-07</low>
+      <open>7.1e-07</open>
+      <close>6.5e-07</close>
+      <volume>227490952.40248</volume>
+    </date>
+    <date date="2015-05-30 00:00:00">
+      <timestamp>1432958400</timestamp>
+      <high>7.3e-07</high>
+      <low>6.6e-07</low>
+      <open>7.3e-07</open>
+      <close>7e-07</close>
+      <volume>500307461.82848</volume>
+    </date>
+    <date date="2015-05-29 00:00:00">
+      <timestamp>1432872000</timestamp>
+      <high>8.4e-07</high>
+      <low>7.1e-07</low>
+      <open>8.1e-07</open>
+      <close>7.2e-07</close>
+      <volume>550961397.89257</volume>
+    </date>
+    <date date="2015-05-28 00:00:00">
+      <timestamp>1432785600</timestamp>
+      <high>8.7e-07</high>
+      <low>7.3e-07</low>
+      <open>7.5e-07</open>
+      <close>8e-07</close>
+      <volume>735244703.88588</volume>
+    </date>
+    <date date="2015-05-27 00:00:00">
+      <timestamp>1432699200</timestamp>
+      <high>8e-07</high>
+      <low>6.7e-07</low>
+      <open>7.2e-07</open>
+      <close>7.4e-07</close>
+      <volume>737011843.82371</volume>
+    </date>
+    <date date="2015-05-26 00:00:00">
+      <timestamp>1432612800</timestamp>
+      <high>7.2e-07</high>
+      <low>5.8e-07</low>
+      <open>6e-07</open>
+      <close>7.1e-07</close>
+      <volume>575684647.77993</volume>
+    </date>
+    <date date="2015-05-25 00:00:00">
+      <timestamp>1432526400</timestamp>
+      <high>6.1e-07</high>
+      <low>5.8e-07</low>
+      <open>5.9e-07</open>
+      <close>5.9e-07</close>
+      <volume>102592046.4888</volume>
+    </date>
+    <date date="2015-05-24 00:00:00">
+      <timestamp>1432440000</timestamp>
+      <high>6e-07</high>
+      <low>5.5e-07</low>
+      <open>5.5e-07</open>
+      <close>5.8e-07</close>
+      <volume>203842235.75626</volume>
+    </date>
+    <date date="2015-05-23 00:00:00">
+      <timestamp>1432353600</timestamp>
+      <high>6e-07</high>
+      <low>5.4e-07</low>
+      <open>5.9e-07</open>
+      <close>5.5e-07</close>
+      <volume>322061719.9112</volume>
+    </date>
+    <date date="2015-05-22 00:00:00">
+      <timestamp>1432267200</timestamp>
+      <high>6e-07</high>
+      <low>5.3e-07</low>
+      <open>5.5e-07</open>
+      <close>6e-07</close>
+      <volume>439614268.78299</volume>
+    </date>
+    <date date="2015-05-21 00:00:00">
+      <timestamp>1432180800</timestamp>
+      <high>5.8e-07</high>
+      <low>5.4e-07</low>
+      <open>5.6e-07</open>
+      <close>5.5e-07</close>
+      <volume>247847023.67996</volume>
+    </date>
+    <date date="2015-05-20 00:00:00">
+      <timestamp>1432094400</timestamp>
+      <high>5.9e-07</high>
+      <low>5.3e-07</low>
+      <open>5.4e-07</open>
+      <close>5.6e-07</close>
+      <volume>413122645.8286</volume>
+    </date>
+    <date date="2015-05-19 00:00:00">
+      <timestamp>1432008000</timestamp>
+      <high>5.5e-07</high>
+      <low>4.8e-07</low>
+      <open>4.9e-07</open>
+      <close>5.4e-07</close>
+      <volume>233137199.91224</volume>
+    </date>
+    <date date="2015-05-18 00:00:00">
+      <timestamp>1431921600</timestamp>
+      <high>5e-07</high>
+      <low>4.8e-07</low>
+      <open>4.9e-07</open>
+      <close>4.9e-07</close>
+      <volume>59389906.37768</volume>
+    </date>
+    <date date="2015-05-17 00:00:00">
+      <timestamp>1431835200</timestamp>
+      <high>7.4e-07</high>
+      <low>3e-07</low>
+      <open>4.9e-07</open>
+      <close>4.8e-07</close>
+      <volume>37752239.969334</volume>
+    </date>
+    <date date="2015-05-16 00:00:00">
+      <timestamp>1431748800</timestamp>
+      <high>5.2e-07</high>
+      <low>4.8e-07</low>
+      <open>5.2e-07</open>
+      <close>4.9e-07</close>
+      <volume>90241384.124874</volume>
+    </date>
+    <date date="2015-05-15 00:00:00">
+      <timestamp>1431662400</timestamp>
+      <high>5.2e-07</high>
+      <low>4.8e-07</low>
+      <open>4.9e-07</open>
+      <close>5.1e-07</close>
+      <volume>168712697.94492</volume>
+    </date>
+    <date date="2015-05-14 00:00:00">
+      <timestamp>1431576000</timestamp>
+      <high>4.9e-07</high>
+      <low>4.4e-07</low>
+      <open>4.4e-07</open>
+      <close>4.8e-07</close>
+      <volume>296681433.248</volume>
+    </date>
+    <date date="2015-05-13 00:00:00">
+      <timestamp>1431489600</timestamp>
+      <high>4.8e-07</high>
+      <low>4.4e-07</low>
+      <open>4.6e-07</open>
+      <close>4.4e-07</close>
+      <volume>187366079.92987</volume>
+    </date>
+    <date date="2015-05-12 00:00:00">
+      <timestamp>1431403200</timestamp>
+      <high>5e-07</high>
+      <low>3.8e-07</low>
+      <open>3.8e-07</open>
+      <close>4.6e-07</close>
+      <volume>861691418.27914</volume>
+    </date>
+    <date date="2015-05-11 00:00:00">
+      <timestamp>1431316800</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.9e-07</close>
+      <volume>151300532.93375</volume>
+    </date>
+    <date date="2015-05-10 00:00:00">
+      <timestamp>1431230400</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.8e-07</open>
+      <close>3.7e-07</close>
+      <volume>261637451.84101</volume>
+    </date>
+    <date date="2015-05-09 00:00:00">
+      <timestamp>1431144000</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.8e-07</close>
+      <volume>145370104.55727</volume>
+    </date>
+    <date date="2015-05-08 00:00:00">
+      <timestamp>1431057600</timestamp>
+      <high>3.8e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.7e-07</close>
+      <volume>94353800.363994</volume>
+    </date>
+    <date date="2015-05-07 00:00:00">
+      <timestamp>1430971200</timestamp>
+      <high>3.8e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.7e-07</close>
+      <volume>94725687.544893</volume>
+    </date>
+    <date date="2015-05-06 00:00:00">
+      <timestamp>1430884800</timestamp>
+      <high>3.8e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.7e-07</close>
+      <volume>95005939.724252</volume>
+    </date>
+    <date date="2015-05-05 00:00:00">
+      <timestamp>1430798400</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.8e-07</close>
+      <volume>169477122.66817</volume>
+    </date>
+    <date date="2015-05-04 00:00:00">
+      <timestamp>1430712000</timestamp>
+      <high>3.9e-07</high>
+      <low>3.7e-07</low>
+      <open>3.7e-07</open>
+      <close>3.8e-07</close>
+      <volume>140756834.8846</volume>
+    </date>
+    <date date="2015-05-03 00:00:00">
+      <timestamp>1430625600</timestamp>
+      <high>4.2e-07</high>
+      <low>3.6e-07</low>
+      <open>4.1e-07</open>
+      <close>3.8e-07</close>
+      <volume>604336157.96932</volume>
+    </date>
+    <date date="2015-05-02 00:00:00">
+      <timestamp>1430539200</timestamp>
+      <high>4.3e-07</high>
+      <low>4.1e-07</low>
+      <open>4.1e-07</open>
+      <close>4.1e-07</close>
+      <volume>207285353.82866</volume>
+    </date>
+    <date date="2015-05-01 00:00:00">
+      <timestamp>1430452800</timestamp>
+      <high>4.4e-07</high>
+      <low>4.1e-07</low>
+      <open>4.3e-07</open>
+      <close>4.3e-07</close>
+      <volume>399567097.37887</volume>
+    </date>
+    <date date="2015-04-30 00:00:00">
+      <timestamp>1430366400</timestamp>
+      <high>4.4e-07</high>
+      <low>4.2e-07</low>
+      <open>4.3e-07</open>
+      <close>4.3e-07</close>
+      <volume>223560528.15266</volume>
+    </date>
+    <date date="2015-04-29 00:00:00">
+      <timestamp>1430280000</timestamp>
+      <high>4.5e-07</high>
+      <low>4.3e-07</low>
+      <open>4.4e-07</open>
+      <close>4.4e-07</close>
+      <volume>84509319.480086</volume>
+    </date>
+    <date date="2015-04-28 00:00:00">
+      <timestamp>1430193600</timestamp>
+      <high>4.5e-07</high>
+      <low>4.3e-07</low>
+      <open>4.5e-07</open>
+      <close>4.4e-07</close>
+      <volume>107714631.11989</volume>
+    </date>
+    <date date="2015-04-27 00:00:00">
+      <timestamp>1430107200</timestamp>
+      <high>4.7e-07</high>
+      <low>4.4e-07</low>
+      <open>4.6e-07</open>
+      <close>4.4e-07</close>
+      <volume>240187922.22619</volume>
+    </date>
+    <date date="2015-04-26 00:00:00">
+      <timestamp>1430020800</timestamp>
+      <high>4.6e-07</high>
+      <low>4.5e-07</low>
+      <open>4.6e-07</open>
+      <close>4.6e-07</close>
+      <volume>103994389.11588</volume>
+    </date>
+    <date date="2015-04-25 00:00:00">
+      <timestamp>1429934400</timestamp>
+      <high>4.6e-07</high>
+      <low>4.4e-07</low>
+      <open>4.5e-07</open>
+      <close>4.6e-07</close>
+      <volume>168085081.79216</volume>
+    </date>
+    <date date="2015-04-24 00:00:00">
+      <timestamp>1429848000</timestamp>
+      <high>4.7e-07</high>
+      <low>4.4e-07</low>
+      <open>4.7e-07</open>
+      <close>4.6e-07</close>
+      <volume>268148268.19595</volume>
+    </date>
+    <date date="2015-04-23 00:00:00">
+      <timestamp>1429761600</timestamp>
+      <high>4.7e-07</high>
+      <low>4.6e-07</low>
+      <open>4.7e-07</open>
+      <close>4.7e-07</close>
+      <volume>94384342.306722</volume>
+    </date>
+    <date date="2015-04-22 00:00:00">
+      <timestamp>1429675200</timestamp>
+      <high>4.7e-07</high>
+      <low>4.6e-07</low>
+      <open>4.7e-07</open>
+      <close>4.6e-07</close>
+      <volume>111957029.73095</volume>
+    </date>
+    <date date="2015-04-21 00:00:00">
+      <timestamp>1429588800</timestamp>
+      <high>4.7e-07</high>
+      <low>4.4e-07</low>
+      <open>4.7e-07</open>
+      <close>4.6e-07</close>
+      <volume>232251549.87299</volume>
+    </date>
+    <date date="2015-04-20 00:00:00">
+      <timestamp>1429502400</timestamp>
+      <high>4.8e-07</high>
+      <low>4.6e-07</low>
+      <open>4.7e-07</open>
+      <close>4.7e-07</close>
+      <volume>104520283.42974</volume>
+    </date>
+    <date date="2015-04-19 00:00:00">
+      <timestamp>1429416000</timestamp>
+      <high>4.8e-07</high>
+      <low>4.7e-07</low>
+      <open>4.8e-07</open>
+      <close>4.8e-07</close>
+      <volume>114525969.19315</volume>
+    </date>
   </market>
 </history>
