@@ -179,7 +179,7 @@ class MainFrame(Frame):
       
         # Status Frame
         self.statusFrame()
-                
+        
         # Markets
         self.coins_marketFrame()
         
