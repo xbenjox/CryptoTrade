@@ -7,8 +7,14 @@ Uses Cryptsy for data.
 
 Coindesk API is used for Bitcoin GBP Value.
 
-Running:
+#############
+Dependencies:
+#############
+lxml
 
+########
+Running:
+########
 python CryptoTrade.py
 
 Add Cryptsy API keys via settings.
