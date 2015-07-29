@@ -19,12 +19,15 @@ class DataUI(Toplevel):
     
     self.c = c_api
     
+    self.market_data = self.c.markets()
+    
     self.transient(parent)
         
     self.geometry("800x600+50+50")
-        
+      
+    self.get_markets_xml()  
     self.get_history_xml()
-    
+          
     self.createWidgets()
     
     self.updateWidgets()
@@ -32,15 +35,27 @@ class DataUI(Toplevel):
     return
       
   def createWidgets(self):
-    self.lblDogeData = Label(self)
-    self.lblDogeData['text'] = "Doge Data"
-    self.lblDogeData.grid({"row":"1"})
     
-    self.btnDogeCollect = Button(self)
-    self.btnDogeCollect['text'] = "Collect Data"
-    self.btnDogeCollect['command'] = lambda: self.CollectData(132, "day")
-    self.btnDogeCollect.grid({"row":"1", "column":"1"})
+    mroot = self.markettree.getroot()
     
+    self.Close = Button(self)
+    self.Close["text"] = "Get Markets"
+    self.Close["command"] = lambda: self.GetMarkets()
+    self.Close.grid({"row": "0", "columnspan":"1"})
+    
+    x = 1
+    for market in mroot.findall('market'):
+      self.lblDogeData = Label(self)
+      self.lblDogeData['text'] = market.text
+      self.lblDogeData.grid({"row":x})
+    
+      self.btnDogeCollect = Button(self)
+      self.btnDogeCollect['text'] = "Collect Data"
+      self.btnDogeCollect['command'] = lambda: self.CollectData(market.get('id'), "day")
+      self.btnDogeCollect.grid({"row":x, "column":"1"})
+    
+      x += 1
+      
     self.Close = Button(self)
     self.Close["text"] = "Close"
     self.Close["fg"] = "red"
@@ -59,6 +74,12 @@ class DataUI(Toplevel):
       
   def _quit(self):
     self.destroy()
+    return
+
+  def GetMarkets(self):
+    markets = self.c.markets()
+    
+    print(markets['data'])
     return
 
   def CollectData(self, 
@@ -119,3 +140,14 @@ class DataUI(Toplevel):
       
     return 
   
+  def get_markets_xml(self):
+    parser = ET.XMLParser(remove_blank_text=True)
+    
+    self.markettree = ET.parse('Data/markets.xml', parser)
+    
+    root = self.markettree.getroot()
+    
+    for market in root.findall('market'): 
+      print(market.get('id'))
+      
+    return 
